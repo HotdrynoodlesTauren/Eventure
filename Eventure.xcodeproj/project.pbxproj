@@ -13,6 +13,13 @@
 		361B66182B07514900EE36EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361B66162B07514900EE36EC /* Main.storyboard */; };
 		361B661A2B07514B00EE36EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 361B66192B07514B00EE36EC /* Assets.xcassets */; };
 		361B661D2B07514B00EE36EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361B661B2B07514B00EE36EC /* LaunchScreen.storyboard */; };
+		361B66252B07EDDF00EE36EC /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66242B07EDDF00EE36EC /* ConnectionsViewController.swift */; };
+		361B66272B07EDF500EE36EC /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66262B07EDF500EE36EC /* MyProfileViewController.swift */; };
+		361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66282B07EE2E00EE36EC /* MyProfileView.swift */; };
+		361B662B2B07EE4500EE36EC /* ConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B662A2B07EE4500EE36EC /* ConnectionsView.swift */; };
+		361B662D2B07EE7700EE36EC /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B662C2B07EE7700EE36EC /* MainScreenView.swift */; };
+		361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66332B07F2DB00EE36EC /* ExploreViewController.swift */; };
+		361B66372B07F34600EE36EC /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66362B07F34600EE36EC /* ExploreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		361B66192B07514B00EE36EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		361B661C2B07514B00EE36EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		361B661E2B07514B00EE36EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		361B66242B07EDDF00EE36EC /* ConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		361B66262B07EDF500EE36EC /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		361B66282B07EE2E00EE36EC /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		361B662A2B07EE4500EE36EC /* ConnectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsView.swift; sourceTree = "<group>"; };
+		361B662C2B07EE7700EE36EC /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		361B66332B07F2DB00EE36EC /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		361B66362B07F34600EE36EC /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +72,52 @@
 			children = (
 				361B66102B07514900EE36EC /* AppDelegate.swift */,
 				361B66122B07514900EE36EC /* SceneDelegate.swift */,
-				361B66142B07514900EE36EC /* ViewController.swift */,
+				361B662E2B07EE7E00EE36EC /* Main Screen */,
+				361B66352B07F2F600EE36EC /* Explore Screen */,
+				361B662F2B07EEA600EE36EC /* Connections Screen */,
+				361B66302B07EED200EE36EC /* My Profile Screen */,
 				361B66162B07514900EE36EC /* Main.storyboard */,
 				361B66192B07514B00EE36EC /* Assets.xcassets */,
 				361B661B2B07514B00EE36EC /* LaunchScreen.storyboard */,
 				361B661E2B07514B00EE36EC /* Info.plist */,
 			);
 			path = Eventure;
+			sourceTree = "<group>";
+		};
+		361B662E2B07EE7E00EE36EC /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				361B66142B07514900EE36EC /* ViewController.swift */,
+				361B662C2B07EE7700EE36EC /* MainScreenView.swift */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		361B662F2B07EEA600EE36EC /* Connections Screen */ = {
+			isa = PBXGroup;
+			children = (
+				361B66242B07EDDF00EE36EC /* ConnectionsViewController.swift */,
+				361B662A2B07EE4500EE36EC /* ConnectionsView.swift */,
+			);
+			path = "Connections Screen";
+			sourceTree = "<group>";
+		};
+		361B66302B07EED200EE36EC /* My Profile Screen */ = {
+			isa = PBXGroup;
+			children = (
+				361B66262B07EDF500EE36EC /* MyProfileViewController.swift */,
+				361B66282B07EE2E00EE36EC /* MyProfileView.swift */,
+			);
+			path = "My Profile Screen";
+			sourceTree = "<group>";
+		};
+		361B66352B07F2F600EE36EC /* Explore Screen */ = {
+			isa = PBXGroup;
+			children = (
+				361B66332B07F2DB00EE36EC /* ExploreViewController.swift */,
+				361B66362B07F34600EE36EC /* ExploreView.swift */,
+			);
+			path = "Explore Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +191,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361B66272B07EDF500EE36EC /* MyProfileViewController.swift in Sources */,
+				361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */,
+				361B66252B07EDDF00EE36EC /* ConnectionsViewController.swift in Sources */,
 				361B66152B07514900EE36EC /* ViewController.swift in Sources */,
+				361B66372B07F34600EE36EC /* ExploreView.swift in Sources */,
 				361B66112B07514900EE36EC /* AppDelegate.swift in Sources */,
+				361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */,
+				361B662B2B07EE4500EE36EC /* ConnectionsView.swift in Sources */,
+				361B662D2B07EE7700EE36EC /* MainScreenView.swift in Sources */,
 				361B66132B07514900EE36EC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
