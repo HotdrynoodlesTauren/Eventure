@@ -10,13 +10,15 @@ import UIKit
 class ExploreViewController: UIViewController {
 
     let exploreScreen = ExploreView()
+    var longTermEventsViewController: LongTermEventsViewController!
+    var shortTermEventsViewController: ShortTermEventsViewController!
     
     //MARK: Top tap bar
     let segmentedControl = {
         let items = ["Long Term Events", "Short Term Events"]
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+        segmentedControl.addTarget(ExploreViewController.self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         return segmentedControl
     }()
     
@@ -29,9 +31,17 @@ class ExploreViewController: UIViewController {
         
         // Add the segmented control to the view
         view.addSubview(segmentedControl)
+//        longTermEventsViewController = LongTermEventsViewController()
+//        shortTermEventsViewController = ShortTermEventsViewController()
+//        
+//        // Set Long Term Events ViewController by default
+//        addChild(longTermEventsViewController)
+//        view.addSubview(longTermEventsViewController.view)
+//        longTermEventsViewController.didMove(toParent: self)
         
         view.backgroundColor = .white
 //        title = "Explore Events Near You"
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,10 +56,26 @@ class ExploreViewController: UIViewController {
         let selectedIndex = sender.selectedSegmentIndex
         if selectedIndex == 0 {
             // Switch to the first view
-//            view.backgroundColor = UIColor.green
+            view.backgroundColor = UIColor.green
+//            switchToChildViewController(longTermEventsViewController)
         } else {
             // Switch to the second view
-//            view.backgroundColor = UIColor.yellow
+            view.backgroundColor = UIColor.yellow
+//            switchToChildViewController(shortTermEventsViewController)
         }
+    }
+    
+    func switchToChildViewController(_ childViewController: UIViewController) {
+        // Remove the currently displayed child view controller
+        if let currentChild = children.first {
+            currentChild.willMove(toParent: nil)
+            currentChild.view.removeFromSuperview()
+            currentChild.removeFromParent()
+        }
+        
+        // Add the new child view controller
+        addChild(childViewController)
+        view.addSubview(childViewController.view)
+        childViewController.didMove(toParent: self)
     }
 }
