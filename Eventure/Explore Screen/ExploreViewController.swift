@@ -14,11 +14,11 @@ class ExploreViewController: UIViewController {
     var shortTermEventsViewController: ShortTermEventsViewController!
     
     //MARK: Top tap bar
-    let segmentedControl = {
+    lazy var segmentedControl = {
         let items = ["Long Term Events", "Short Term Events"]
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(ExploreViewController.self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         return segmentedControl
     }()
     
@@ -31,13 +31,13 @@ class ExploreViewController: UIViewController {
         
         // Add the segmented control to the view
         view.addSubview(segmentedControl)
-//        longTermEventsViewController = LongTermEventsViewController()
-//        shortTermEventsViewController = ShortTermEventsViewController()
-//        
-//        // Set Long Term Events ViewController by default
-//        addChild(longTermEventsViewController)
-//        view.addSubview(longTermEventsViewController.view)
-//        longTermEventsViewController.didMove(toParent: self)
+        longTermEventsViewController = LongTermEventsViewController()
+        shortTermEventsViewController = ShortTermEventsViewController()
+        
+        // Set Long Term Events ViewController by default
+        addChild(longTermEventsViewController)
+        view.addSubview(longTermEventsViewController.view)
+        longTermEventsViewController.didMove(toParent: self)
         
         view.backgroundColor = .white
 //        title = "Explore Events Near You"
@@ -56,12 +56,10 @@ class ExploreViewController: UIViewController {
         let selectedIndex = sender.selectedSegmentIndex
         if selectedIndex == 0 {
             // Switch to the first view
-            view.backgroundColor = UIColor.green
-//            switchToChildViewController(longTermEventsViewController)
+            switchToChildViewController(longTermEventsViewController)
         } else {
             // Switch to the second view
-            view.backgroundColor = UIColor.yellow
-//            switchToChildViewController(shortTermEventsViewController)
+            switchToChildViewController(shortTermEventsViewController)
         }
     }
     
