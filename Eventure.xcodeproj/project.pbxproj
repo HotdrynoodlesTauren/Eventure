@@ -20,6 +20,10 @@
 		361B662D2B07EE7700EE36EC /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B662C2B07EE7700EE36EC /* MainScreenView.swift */; };
 		361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66332B07F2DB00EE36EC /* ExploreViewController.swift */; };
 		361B66372B07F34600EE36EC /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66362B07F34600EE36EC /* ExploreView.swift */; };
+		361B66392B08AA2900EE36EC /* LongTermEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66382B08AA2900EE36EC /* LongTermEventsView.swift */; };
+		361B663B2B08AA3A00EE36EC /* LongTermEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B663A2B08AA3A00EE36EC /* LongTermEventsViewController.swift */; };
+		361B663D2B08AA6300EE36EC /* ShortTermEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B663C2B08AA6300EE36EC /* ShortTermEventsViewController.swift */; };
+		361B663F2B08AA7800EE36EC /* ShortTermEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B663E2B08AA7800EE36EC /* ShortTermEventsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		361B662C2B07EE7700EE36EC /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		361B66332B07F2DB00EE36EC /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		361B66362B07F34600EE36EC /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		361B66382B08AA2900EE36EC /* LongTermEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermEventsView.swift; sourceTree = "<group>"; };
+		361B663A2B08AA3A00EE36EC /* LongTermEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermEventsViewController.swift; sourceTree = "<group>"; };
+		361B663C2B08AA6300EE36EC /* ShortTermEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsViewController.swift; sourceTree = "<group>"; };
+		361B663E2B08AA7800EE36EC /* ShortTermEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +124,28 @@
 			children = (
 				361B66332B07F2DB00EE36EC /* ExploreViewController.swift */,
 				361B66362B07F34600EE36EC /* ExploreView.swift */,
+				361B66412B08AA8F00EE36EC /* Long Term Events */,
+				361B66402B08AA8100EE36EC /* Short Term Events */,
 			);
 			path = "Explore Screen";
+			sourceTree = "<group>";
+		};
+		361B66402B08AA8100EE36EC /* Short Term Events */ = {
+			isa = PBXGroup;
+			children = (
+				361B663C2B08AA6300EE36EC /* ShortTermEventsViewController.swift */,
+				361B663E2B08AA7800EE36EC /* ShortTermEventsView.swift */,
+			);
+			path = "Short Term Events";
+			sourceTree = "<group>";
+		};
+		361B66412B08AA8F00EE36EC /* Long Term Events */ = {
+			isa = PBXGroup;
+			children = (
+				361B66382B08AA2900EE36EC /* LongTermEventsView.swift */,
+				361B663A2B08AA3A00EE36EC /* LongTermEventsViewController.swift */,
+			);
+			path = "Long Term Events";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,10 +219,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361B66392B08AA2900EE36EC /* LongTermEventsView.swift in Sources */,
+				361B663D2B08AA6300EE36EC /* ShortTermEventsViewController.swift in Sources */,
 				361B66272B07EDF500EE36EC /* MyProfileViewController.swift in Sources */,
 				361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */,
 				361B66252B07EDDF00EE36EC /* ConnectionsViewController.swift in Sources */,
 				361B66152B07514900EE36EC /* ViewController.swift in Sources */,
+				361B663F2B08AA7800EE36EC /* ShortTermEventsView.swift in Sources */,
+				361B663B2B08AA3A00EE36EC /* LongTermEventsViewController.swift in Sources */,
 				361B66372B07F34600EE36EC /* ExploreView.swift in Sources */,
 				361B66112B07514900EE36EC /* AppDelegate.swift in Sources */,
 				361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */,
