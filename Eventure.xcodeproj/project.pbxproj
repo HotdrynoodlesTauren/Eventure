@@ -20,6 +20,15 @@
 		361B662D2B07EE7700EE36EC /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B662C2B07EE7700EE36EC /* MainScreenView.swift */; };
 		361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66332B07F2DB00EE36EC /* ExploreViewController.swift */; };
 		361B66372B07F34600EE36EC /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66362B07F34600EE36EC /* ExploreView.swift */; };
+		36F0F5E12B1B33DF00AD8EF5 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5D92B1B33DF00AD8EF5 /* ReviewsTableViewCell.swift */; };
+		36F0F5E22B1B33DF00AD8EF5 /* EventReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5DA2B1B33DF00AD8EF5 /* EventReviewsViewController.swift */; };
+		36F0F5E32B1B33DF00AD8EF5 /* EventReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5DB2B1B33DF00AD8EF5 /* EventReviewsView.swift */; };
+		36F0F5E42B1B33DF00AD8EF5 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5DC2B1B33DF00AD8EF5 /* EventDetailViewController.swift */; };
+		36F0F5E52B1B33DF00AD8EF5 /* EventWriteAReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5DE2B1B33DF00AD8EF5 /* EventWriteAReviewViewController.swift */; };
+		36F0F5E62B1B33DF00AD8EF5 /* EventWriteAReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5DF2B1B33DF00AD8EF5 /* EventWriteAReviewView.swift */; };
+		36F0F5E72B1B33DF00AD8EF5 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5E02B1B33DF00AD8EF5 /* EventDetailView.swift */; };
+		36F0F5EA2B1B340100AD8EF5 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5E82B1B340100AD8EF5 /* NotificationNames.swift */; };
+		36F0F5EB2B1B340100AD8EF5 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5E92B1B340100AD8EF5 /* DataModels.swift */; };
 		A50926CC2B1AC6F3003036E9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A50926CB2B1AC6F3003036E9 /* FirebaseAnalytics */; };
 		A50926CE2B1AC6F3003036E9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = A50926CD2B1AC6F3003036E9 /* FirebaseAnalyticsOnDeviceConversion */; };
 		A50926D02B1AC6F3003036E9 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A50926CF2B1AC6F3003036E9 /* FirebaseAnalyticsSwift */; };
@@ -41,8 +50,6 @@
 		A50926F02B1AC8B4003036E9 /* LongTermEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926EF2B1AC8B4003036E9 /* LongTermEventsViewController.swift */; };
 		A50926F22B1AC8D3003036E9 /* ShortTermEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F12B1AC8D3003036E9 /* ShortTermEventsViewController.swift */; };
 		A50926F42B1AC8E7003036E9 /* ShortTermEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F32B1AC8E7003036E9 /* ShortTermEventsView.swift */; };
-		A50926F82B1AC988003036E9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F72B1AC988003036E9 /* Event.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,14 +68,21 @@
 		361B662C2B07EE7700EE36EC /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		361B66332B07F2DB00EE36EC /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		361B66362B07F34600EE36EC /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		36F0F5D92B1B33DF00AD8EF5 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		36F0F5DA2B1B33DF00AD8EF5 /* EventReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventReviewsViewController.swift; sourceTree = "<group>"; };
+		36F0F5DB2B1B33DF00AD8EF5 /* EventReviewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventReviewsView.swift; sourceTree = "<group>"; };
+		36F0F5DC2B1B33DF00AD8EF5 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		36F0F5DE2B1B33DF00AD8EF5 /* EventWriteAReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventWriteAReviewViewController.swift; sourceTree = "<group>"; };
+		36F0F5DF2B1B33DF00AD8EF5 /* EventWriteAReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventWriteAReviewView.swift; sourceTree = "<group>"; };
+		36F0F5E02B1B33DF00AD8EF5 /* EventDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		36F0F5E82B1B340100AD8EF5 /* NotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
+		36F0F5E92B1B340100AD8EF5 /* DataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		A50926E92B1AC7EF003036E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A50926EB2B1AC877003036E9 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		A50926ED2B1AC89F003036E9 /* LongTermEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermEventsView.swift; sourceTree = "<group>"; };
 		A50926EF2B1AC8B4003036E9 /* LongTermEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermEventsViewController.swift; sourceTree = "<group>"; };
 		A50926F12B1AC8D3003036E9 /* ShortTermEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsViewController.swift; sourceTree = "<group>"; };
 		A50926F32B1AC8E7003036E9 /* ShortTermEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsView.swift; sourceTree = "<group>"; };
-		A50926F72B1AC988003036E9 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,14 +180,35 @@
 				361B66332B07F2DB00EE36EC /* ExploreViewController.swift */,
 				361B66362B07F34600EE36EC /* ExploreView.swift */,
 				A50926EB2B1AC877003036E9 /* EventTableViewCell.swift */,
+				36F0F5D82B1B33DF00AD8EF5 /* Event Detail Screens */,
 				A50926F52B1AC90E003036E9 /* Long Term Events */,
 				A50926F62B1AC922003036E9 /* Short Term Events */,
-
 			);
 			path = "Explore Screen";
 			sourceTree = "<group>";
 		};
-
+		36F0F5D82B1B33DF00AD8EF5 /* Event Detail Screens */ = {
+			isa = PBXGroup;
+			children = (
+				36F0F5D92B1B33DF00AD8EF5 /* ReviewsTableViewCell.swift */,
+				36F0F5DA2B1B33DF00AD8EF5 /* EventReviewsViewController.swift */,
+				36F0F5DB2B1B33DF00AD8EF5 /* EventReviewsView.swift */,
+				36F0F5DC2B1B33DF00AD8EF5 /* EventDetailViewController.swift */,
+				36F0F5DD2B1B33DF00AD8EF5 /* Write Review Screen */,
+				36F0F5E02B1B33DF00AD8EF5 /* EventDetailView.swift */,
+			);
+			path = "Event Detail Screens";
+			sourceTree = "<group>";
+		};
+		36F0F5DD2B1B33DF00AD8EF5 /* Write Review Screen */ = {
+			isa = PBXGroup;
+			children = (
+				36F0F5DE2B1B33DF00AD8EF5 /* EventWriteAReviewViewController.swift */,
+				36F0F5DF2B1B33DF00AD8EF5 /* EventWriteAReviewView.swift */,
+			);
+			path = "Write Review Screen";
+			sourceTree = "<group>";
+		};
 		A50926F52B1AC90E003036E9 /* Long Term Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +230,8 @@
 		A50926F92B1AC993003036E9 /* Data Structure */ = {
 			isa = PBXGroup;
 			children = (
-				A50926F72B1AC988003036E9 /* Event.swift */,
+				36F0F5E92B1B340100AD8EF5 /* DataModels.swift */,
+				36F0F5E82B1B340100AD8EF5 /* NotificationNames.swift */,
 			);
 			path = "Data Structure";
 			sourceTree = "<group>";
@@ -299,26 +335,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				361B66392B08AA2900EE36EC /* LongTermEventsView.swift in Sources */,
-				361B663D2B08AA6300EE36EC /* ShortTermEventsViewController.swift in Sources */,
 				361B66272B07EDF500EE36EC /* MyProfileViewController.swift in Sources */,
+				36F0F5E42B1B33DF00AD8EF5 /* EventDetailViewController.swift in Sources */,
+				36F0F5E22B1B33DF00AD8EF5 /* EventReviewsViewController.swift in Sources */,
 				A50926EC2B1AC877003036E9 /* EventTableViewCell.swift in Sources */,
 				361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */,
 				361B66252B07EDDF00EE36EC /* ConnectionsViewController.swift in Sources */,
+				36F0F5EA2B1B340100AD8EF5 /* NotificationNames.swift in Sources */,
 				361B66152B07514900EE36EC /* ViewController.swift in Sources */,
-				361B663F2B08AA7800EE36EC /* ShortTermEventsView.swift in Sources */,
-				361B663B2B08AA3A00EE36EC /* LongTermEventsViewController.swift in Sources */,
+				36F0F5E52B1B33DF00AD8EF5 /* EventWriteAReviewViewController.swift in Sources */,
+				36F0F5EB2B1B340100AD8EF5 /* DataModels.swift in Sources */,
 				361B66372B07F34600EE36EC /* ExploreView.swift in Sources */,
 				361B66112B07514900EE36EC /* AppDelegate.swift in Sources */,
 				361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */,
-				A50926F82B1AC988003036E9 /* Event.swift in Sources */,
 				361B662B2B07EE4500EE36EC /* ConnectionsView.swift in Sources */,
 				361B662D2B07EE7700EE36EC /* MainScreenView.swift in Sources */,
 				361B66132B07514900EE36EC /* SceneDelegate.swift in Sources */,
 				A50926EE2B1AC89F003036E9 /* LongTermEventsView.swift in Sources */,
 				A50926F42B1AC8E7003036E9 /* ShortTermEventsView.swift in Sources */,
+				36F0F5E12B1B33DF00AD8EF5 /* ReviewsTableViewCell.swift in Sources */,
+				36F0F5E62B1B33DF00AD8EF5 /* EventWriteAReviewView.swift in Sources */,
 				A50926F22B1AC8D3003036E9 /* ShortTermEventsViewController.swift in Sources */,
 				A50926F02B1AC8B4003036E9 /* LongTermEventsViewController.swift in Sources */,
+				36F0F5E72B1B33DF00AD8EF5 /* EventDetailView.swift in Sources */,
+				36F0F5E32B1B33DF00AD8EF5 /* EventReviewsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
