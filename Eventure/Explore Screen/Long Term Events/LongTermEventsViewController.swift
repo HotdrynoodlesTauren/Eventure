@@ -18,6 +18,7 @@ class LongTermEventsViewController: UIViewController {
         super.loadView()
         longTermEventsView = LongTermEventsView()
         view = longTermEventsView
+
     }
     
     override func viewDidLoad() {

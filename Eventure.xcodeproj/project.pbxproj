@@ -42,6 +42,7 @@
 		A50926F22B1AC8D3003036E9 /* ShortTermEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F12B1AC8D3003036E9 /* ShortTermEventsViewController.swift */; };
 		A50926F42B1AC8E7003036E9 /* ShortTermEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F32B1AC8E7003036E9 /* ShortTermEventsView.swift */; };
 		A50926F82B1AC988003036E9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F72B1AC988003036E9 /* Event.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		A50926F12B1AC8D3003036E9 /* ShortTermEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsViewController.swift; sourceTree = "<group>"; };
 		A50926F32B1AC8E7003036E9 /* ShortTermEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsView.swift; sourceTree = "<group>"; };
 		A50926F72B1AC988003036E9 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,10 +168,12 @@
 				A50926EB2B1AC877003036E9 /* EventTableViewCell.swift */,
 				A50926F52B1AC90E003036E9 /* Long Term Events */,
 				A50926F62B1AC922003036E9 /* Short Term Events */,
+
 			);
 			path = "Explore Screen";
 			sourceTree = "<group>";
 		};
+
 		A50926F52B1AC90E003036E9 /* Long Term Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,11 +299,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				361B66392B08AA2900EE36EC /* LongTermEventsView.swift in Sources */,
+				361B663D2B08AA6300EE36EC /* ShortTermEventsViewController.swift in Sources */,
 				361B66272B07EDF500EE36EC /* MyProfileViewController.swift in Sources */,
 				A50926EC2B1AC877003036E9 /* EventTableViewCell.swift in Sources */,
 				361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */,
 				361B66252B07EDDF00EE36EC /* ConnectionsViewController.swift in Sources */,
 				361B66152B07514900EE36EC /* ViewController.swift in Sources */,
+				361B663F2B08AA7800EE36EC /* ShortTermEventsView.swift in Sources */,
+				361B663B2B08AA3A00EE36EC /* LongTermEventsViewController.swift in Sources */,
 				361B66372B07F34600EE36EC /* ExploreView.swift in Sources */,
 				361B66112B07514900EE36EC /* AppDelegate.swift in Sources */,
 				361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */,

@@ -95,6 +95,4 @@ class ExploreViewController: UIViewController {
         // Set the frame for the segmented control
         segmentedControl.frame = CGRect(x: 20, y: 100, width: view.bounds.width - 40, height: 30)
     }
-        
-
 }

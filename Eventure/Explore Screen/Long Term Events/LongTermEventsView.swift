@@ -1,3 +1,4 @@
+
 import UIKit
 
 class LongTermEventsView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -36,7 +37,6 @@ class LongTermEventsView: UIView, UITableViewDataSource, UITableViewDelegate {
         initConstraints()
       
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -69,4 +69,5 @@ class LongTermEventsView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+
 }
