@@ -6,27 +6,45 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+
 
 class LongTermEventsViewController: UIViewController {
-
-    let longTermEventsScreen = LongTermEventsView()
-    let exploreScreen = ExploreView()
-
+    
+    var longTermEventsView: LongTermEventsView!
+    
     override func loadView() {
-        view = exploreScreen
+        super.loadView()
+        longTermEventsView = LongTermEventsView()
+        view = longTermEventsView
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(longTermEventsScreen)
-        view.backgroundColor = .white
-//        title = "Long Term Events"
+        fetchEventsFromFirebase()
+    }
+    
+    func fetchEventsFromFirebase() {
+        let db = Firestore.firestore()
+        db.collection("Longterm Events").getDocuments { [weak self] (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            } else {
+                var fetchedEvents: [Event] = []
+                for document in querySnapshot!.documents {
+                    if let event = Event(documentData: document.data(), id: document.documentID) {
+                        fetchedEvents.append(event)
+                        
+                    }
+                }
+                DispatchQueue.main.async {
+                    self?.longTermEventsView.events = fetchedEvents
+                }
+            }
+        }
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        // Set the frame for the first view
-        longTermEventsScreen.frame = view.bounds
-    }
 }

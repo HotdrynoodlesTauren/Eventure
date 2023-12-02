@@ -6,27 +6,45 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+
 
 class ShortTermEventsViewController: UIViewController {
-
-    let shortTermEventsScreen = ShortTermEventsView()
-    let exploreScreen = ExploreView()
-
+    
+    var shortTermEventsView: ShortTermEventsView!
+    
     override func loadView() {
-        view = exploreScreen
+        super.loadView()
+        shortTermEventsView = ShortTermEventsView()
+        view = shortTermEventsView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(shortTermEventsScreen)
-        view.backgroundColor = .white
-//        title = "Short Term Events"
+        fetchEventsFromFirebase()
+    }
+    
+    func fetchEventsFromFirebase() {
+        let db = Firestore.firestore()
+        db.collection("Longterm Events").getDocuments { [weak self] (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                return
+            } else {
+                var fetchedEvents: [Event] = []
+                for document in querySnapshot!.documents {
+                    if let event = Event(documentData: document.data(), id: document.documentID) {
+                        fetchedEvents.append(event)
+                        
+                    }
+                }
+                DispatchQueue.main.async {
+                    self?.shortTermEventsView.events = fetchedEvents
+                }
+            }
+        }
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        // Set the frame for the first view
-        shortTermEventsScreen.frame = view.bounds
-    }
+
 }

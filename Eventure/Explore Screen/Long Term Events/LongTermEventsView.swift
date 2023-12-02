@@ -1,42 +1,73 @@
-//
-//  LongTermEvents.swift
-//  Eventure
-//
-//  Created by Yi Zhou on 11/18/23.
-//
 
 import UIKit
 
-class LongTermEventsView: UIView {
+class LongTermEventsView: UIView, UITableViewDataSource, UITableViewDelegate {
+    var events: [Event] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     
-    var labelTest:UILabel!
-    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Long Term Events"
+        label.textAlignment = .center
+        //label.textColor = UIColor(white) // Light blue color
+        label.font = UIFont.boldSystemFont(ofSize: 24) // System bold font
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+
+
+    private let tableView: UITableView = {
+        let table = UITableView()
+        table.register(EventTableViewCell.self, forCellReuseIdentifier: EventTableViewCell.identifier)
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupLabelTest()
+        self.addSubview(titleLabel)
+        self.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
         initConstraints()
+      
     }
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupLabelTest(){
-        labelTest = UILabel()
-        labelTest.text = "Test text for Long Term Events"
-        labelTest.font = .boldSystemFont(ofSize: 20)
-        labelTest.textAlignment = .center
-        labelTest.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(labelTest)
-    }
-    
-    func initConstraints(){
+    func initConstraints() {
         NSLayoutConstraint.activate([
-            labelTest.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            labelTest.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 40),
+
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            tableView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -5) 
         ])
     }
-    
+
+    // UITableViewDataSource methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier, for: indexPath) as! EventTableViewCell
+        cell.configure(with: events[indexPath.row])
+        return cell
+    }
+
+    // UITableViewDelegate methods
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
 }
