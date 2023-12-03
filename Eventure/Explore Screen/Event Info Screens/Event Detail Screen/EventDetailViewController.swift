@@ -7,8 +7,8 @@
 
 import UIKit
 
-class EventDetailViewController: UIViewController {
-    var receivedEvent:Event!
+class EventDetailViewController: EventInfoViewController {
+    
     let eventDetailScreen = EventDetailView()
 //    var row:Int!
     
@@ -18,7 +18,7 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let eventName = receivedEvent.eventName{
             if !eventName.isEmpty{
                 title = eventName
