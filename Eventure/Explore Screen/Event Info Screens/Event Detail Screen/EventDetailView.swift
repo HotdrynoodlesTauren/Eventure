@@ -9,7 +9,6 @@ import UIKit
 
 class EventDetailView: UIView {
 
-    var imageEvent:UIImageView!
 //    var labelEventName:UILabel!
     var imageTimeSpan:UIImageView!
     var labelTimeSpan:UILabel!
@@ -29,7 +28,6 @@ class EventDetailView: UIView {
         
 //        setupLabelEventName()
         
-        setupImageEvent()
         setupImageTimeSpan()
         setupLabelTimeSpan()
         setupImageAddress()
@@ -61,20 +59,10 @@ class EventDetailView: UIView {
 //        self.addSubview(labelEventName)
 //    }
     
-    func setupImageEvent(){
-        imageEvent = UIImageView()
-        imageEvent.image = UIImage(systemName: "camera.fill")
-        imageEvent.contentMode = .scaleToFill
-        imageEvent.clipsToBounds = true
-        imageEvent.layer.cornerRadius = 10
-        imageEvent.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageEvent)
-    }
-    
     func setupImageTimeSpan(){
         imageTimeSpan = UIImageView()
         imageTimeSpan.image = UIImage(systemName: "calendar.circle.fill")
-        imageTimeSpan.contentMode = .scaleToFill
+        imageTimeSpan.contentMode = .scaleAspectFit
         imageTimeSpan.clipsToBounds = true
         imageTimeSpan.layer.cornerRadius = 10
         imageTimeSpan.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +79,7 @@ class EventDetailView: UIView {
     func setupImageAddress(){
         imageAddress = UIImageView()
         imageAddress.image = UIImage(systemName: "mappin.circle.fill")
-        imageAddress.contentMode = .scaleToFill
+        imageAddress.contentMode = .scaleAspectFit
         imageAddress.clipsToBounds = true
         imageAddress.layer.cornerRadius = 10
         imageAddress.translatesAutoresizingMaskIntoConstraints = false
@@ -109,7 +97,7 @@ class EventDetailView: UIView {
     func setupImageWebsite(){
         imageWebsite = UIImageView()
         imageWebsite.image = UIImage(systemName: "globe.americas.fill")
-        imageWebsite.contentMode = .scaleToFill
+        imageWebsite.contentMode = .scaleAspectFit
         imageWebsite.clipsToBounds = true
         imageWebsite.layer.cornerRadius = 10
         imageWebsite.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +114,7 @@ class EventDetailView: UIView {
     func setupImagePhone(){
         imagePhone = UIImageView()
         imagePhone.image = UIImage(systemName: "phone.circle.fill")
-        imagePhone.contentMode = .scaleToFill
+        imagePhone.contentMode = .scaleAspectFit
         imagePhone.clipsToBounds = true
         imagePhone.layer.cornerRadius = 10
         imagePhone.translatesAutoresizingMaskIntoConstraints = false
@@ -160,12 +148,7 @@ class EventDetailView: UIView {
     
     func initConstraints(){
         NSLayoutConstraint.activate([
-            imageEvent.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            imageEvent.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-            imageEvent.heightAnchor.constraint(equalToConstant: 150),
-            imageEvent.widthAnchor.constraint(equalToConstant: 150),
-            
-            imageTimeSpan.topAnchor.constraint(equalTo: imageEvent.bottomAnchor, constant: 20),
+            imageTimeSpan.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             imageTimeSpan.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             imageTimeSpan.heightAnchor.constraint(equalToConstant: 15),
             

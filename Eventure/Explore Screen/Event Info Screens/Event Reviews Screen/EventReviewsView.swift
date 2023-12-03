@@ -9,7 +9,6 @@ import UIKit
 
 class EventReviewsView: UIView {
 
-    var imageEvent:UIImageView!
     var labelPreviousVisitors:UILabel!
     var buttonWriteAReviews:UIButton!
     var tableViewReviews:UITableView!
@@ -18,7 +17,6 @@ class EventReviewsView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
         
-        setupImageEvent()
         setupLabelPreviousVisitors()
         setupButtonWriteAReviews()
         setupTableViewReviews()
@@ -29,18 +27,6 @@ class EventReviewsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupImageEvent(){
-        imageEvent = UIImageView()
-        imageEvent.image = UIImage(systemName: "person.fill")
-        imageEvent.contentMode = .scaleToFill
-        imageEvent.clipsToBounds = true
-        imageEvent.layer.cornerRadius = 10
-        imageEvent.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageEvent)
-    }
-    
-    
     
     func setupLabelPreviousVisitors(){
         labelPreviousVisitors = UILabel()
@@ -67,16 +53,10 @@ class EventReviewsView: UIView {
     
     func initConstraints(){
         NSLayoutConstraint.activate([
-            imageEvent.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-            imageEvent.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            imageEvent.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            imageEvent.heightAnchor.constraint(equalToConstant: 150),
-//            imageEvent.widthAnchor.constraint(equalToConstant: 150),
+            labelPreviousVisitors.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            labelPreviousVisitors.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             
-            labelPreviousVisitors.topAnchor.constraint(equalTo: imageEvent.bottomAnchor, constant: 16),
-            labelPreviousVisitors.leadingAnchor.constraint(equalTo: imageEvent.leadingAnchor, constant: 10),
-            
-            buttonWriteAReviews.topAnchor.constraint(equalTo: imageEvent.bottomAnchor, constant: 16),
+            buttonWriteAReviews.topAnchor.constraint(equalTo: labelPreviousVisitors.topAnchor),
 //            buttonWriteAReviews.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             buttonWriteAReviews.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             
