@@ -18,8 +18,6 @@
 		361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66282B07EE2E00EE36EC /* MyProfileView.swift */; };
 		361B662B2B07EE4500EE36EC /* ConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B662A2B07EE4500EE36EC /* ConnectionsView.swift */; };
 		361B662D2B07EE7700EE36EC /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B662C2B07EE7700EE36EC /* MainScreenView.swift */; };
-		361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66332B07F2DB00EE36EC /* ExploreViewController.swift */; };
-		361B66372B07F34600EE36EC /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B66362B07F34600EE36EC /* ExploreView.swift */; };
 		3656B0472B1C57E300D777B5 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B03D2B1C57E300D777B5 /* EventDetailViewController.swift */; };
 		3656B0482B1C57E300D777B5 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B03E2B1C57E300D777B5 /* EventDetailView.swift */; };
 		3656B0492B1C57E300D777B5 /* EventInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B03F2B1C57E300D777B5 /* EventInfoViewController.swift */; };
@@ -51,8 +49,6 @@
 		A50926EC2B1AC877003036E9 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926EB2B1AC877003036E9 /* EventTableViewCell.swift */; };
 		A50926EE2B1AC89F003036E9 /* LongTermEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926ED2B1AC89F003036E9 /* LongTermEventsView.swift */; };
 		A50926F02B1AC8B4003036E9 /* LongTermEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926EF2B1AC8B4003036E9 /* LongTermEventsViewController.swift */; };
-		A50926F22B1AC8D3003036E9 /* ShortTermEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F12B1AC8D3003036E9 /* ShortTermEventsViewController.swift */; };
-		A50926F42B1AC8E7003036E9 /* ShortTermEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50926F32B1AC8E7003036E9 /* ShortTermEventsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,8 +65,6 @@
 		361B66282B07EE2E00EE36EC /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		361B662A2B07EE4500EE36EC /* ConnectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsView.swift; sourceTree = "<group>"; };
 		361B662C2B07EE7700EE36EC /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
-		361B66332B07F2DB00EE36EC /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
-		361B66362B07F34600EE36EC /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		3656B03D2B1C57E300D777B5 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		3656B03E2B1C57E300D777B5 /* EventDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		3656B03F2B1C57E300D777B5 /* EventInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInfoViewController.swift; sourceTree = "<group>"; };
@@ -87,8 +81,6 @@
 		A50926EB2B1AC877003036E9 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		A50926ED2B1AC89F003036E9 /* LongTermEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermEventsView.swift; sourceTree = "<group>"; };
 		A50926EF2B1AC8B4003036E9 /* LongTermEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermEventsViewController.swift; sourceTree = "<group>"; };
-		A50926F12B1AC8D3003036E9 /* ShortTermEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsViewController.swift; sourceTree = "<group>"; };
-		A50926F32B1AC8E7003036E9 /* ShortTermEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermEventsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,11 +175,9 @@
 		361B66352B07F2F600EE36EC /* Explore Screen */ = {
 			isa = PBXGroup;
 			children = (
-				361B66332B07F2DB00EE36EC /* ExploreViewController.swift */,
-				361B66362B07F34600EE36EC /* ExploreView.swift */,
 				A50926EB2B1AC877003036E9 /* EventTableViewCell.swift */,
-				A50926F52B1AC90E003036E9 /* Long Term Events */,
-				A50926F62B1AC922003036E9 /* Short Term Events */,
+				A50926ED2B1AC89F003036E9 /* LongTermEventsView.swift */,
+				A50926EF2B1AC8B4003036E9 /* LongTermEventsViewController.swift */,
 				3656B03B2B1C57E300D777B5 /* Event Info Screens */,
 			);
 			path = "Explore Screen";
@@ -232,24 +222,6 @@
 				3656B0462B1C57E300D777B5 /* EventWriteAReviewView.swift */,
 			);
 			path = "Write Review Screen";
-			sourceTree = "<group>";
-		};
-		A50926F52B1AC90E003036E9 /* Long Term Events */ = {
-			isa = PBXGroup;
-			children = (
-				A50926ED2B1AC89F003036E9 /* LongTermEventsView.swift */,
-				A50926EF2B1AC8B4003036E9 /* LongTermEventsViewController.swift */,
-			);
-			path = "Long Term Events";
-			sourceTree = "<group>";
-		};
-		A50926F62B1AC922003036E9 /* Short Term Events */ = {
-			isa = PBXGroup;
-			children = (
-				A50926F12B1AC8D3003036E9 /* ShortTermEventsViewController.swift */,
-				A50926F32B1AC8E7003036E9 /* ShortTermEventsView.swift */,
-			);
-			path = "Short Term Events";
 			sourceTree = "<group>";
 		};
 		A50926F92B1AC993003036E9 /* Data Structure */ = {
@@ -364,14 +336,12 @@
 				3656B04E2B1C57E300D777B5 /* EventWriteAReviewView.swift in Sources */,
 				A50926EC2B1AC877003036E9 /* EventTableViewCell.swift in Sources */,
 				3656B04A2B1C57E300D777B5 /* ReviewsTableViewCell.swift in Sources */,
-				361B66342B07F2DB00EE36EC /* ExploreViewController.swift in Sources */,
 				361B66252B07EDDF00EE36EC /* ConnectionsViewController.swift in Sources */,
 				36F0F5EA2B1B340100AD8EF5 /* NotificationNames.swift in Sources */,
 				3656B0492B1C57E300D777B5 /* EventInfoViewController.swift in Sources */,
 				361B66152B07514900EE36EC /* ViewController.swift in Sources */,
 				36F0F5EB2B1B340100AD8EF5 /* DataModels.swift in Sources */,
 				3656B0522B1C59FA00D777B5 /* EventDisplayView.swift in Sources */,
-				361B66372B07F34600EE36EC /* ExploreView.swift in Sources */,
 				361B66112B07514900EE36EC /* AppDelegate.swift in Sources */,
 				3656B0502B1C59CA00D777B5 /* EventDisplayViewController.swift in Sources */,
 				361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */,
@@ -384,8 +354,6 @@
 				3656B0472B1C57E300D777B5 /* EventDetailViewController.swift in Sources */,
 				361B66132B07514900EE36EC /* SceneDelegate.swift in Sources */,
 				A50926EE2B1AC89F003036E9 /* LongTermEventsView.swift in Sources */,
-				A50926F42B1AC8E7003036E9 /* ShortTermEventsView.swift in Sources */,
-				A50926F22B1AC8D3003036E9 /* ShortTermEventsViewController.swift in Sources */,
 				A50926F02B1AC8B4003036E9 /* LongTermEventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

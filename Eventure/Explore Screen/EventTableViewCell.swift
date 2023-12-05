@@ -16,7 +16,7 @@ class EventTableViewCell: UITableViewCell {
         return imageView
     }()
     func configure(with event: Event) {
-        eventNameLabel.text = event.name
+        eventNameLabel.text = event.eventName
         eventDescriptionLabel.text = event.description
         if let imageUrl = event.imageUrl {
             setImage(from: imageUrl)
