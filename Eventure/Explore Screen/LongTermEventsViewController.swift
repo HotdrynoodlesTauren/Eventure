@@ -23,6 +23,12 @@ class LongTermEventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backgroundImage = UIImage(named: "Img 1")
+            let backgroundImageView = UIImageView(frame: view.bounds)
+            backgroundImageView.image = backgroundImage
+            backgroundImageView.contentMode = .scaleAspectFill
+            backgroundImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.insertSubview(backgroundImageView, at: 0)
         fetchEventsFromFirebase()
     }
     
@@ -35,10 +41,19 @@ class LongTermEventsViewController: UIViewController {
             } else {
                 var fetchedEvents: [Event] = []
                 for document in querySnapshot!.documents {
-                    if let event = Event(documentData: document.data(), id: document.documentID) {
-                        fetchedEvents.append(event)
-                        
-                    }
+                    
+                    let event = Event(documentData: document.data(), eventId: document.documentID)
+                    fetchedEvents.append(event)
+                    
+                    
+//                    do {
+//                        if let event = try Event(documentData: document.data() as! Decoder, eventId: document.documentID) {
+//                            fetchedEvents.append(event)
+//                        }
+//                    } catch {
+//                        // Handle the error here
+//                        print("Error creating Event: \(error)")
+//                    }
                 }
                 DispatchQueue.main.async {
                     self?.longTermEventsView.events = fetchedEvents

@@ -70,4 +70,11 @@ class LongTermEventsView: UIView, UITableViewDataSource, UITableViewDelegate {
         return 100
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = events[indexPath.row]
+        let eventDisplayViewController = EventDisplayViewController()
+        eventDisplayViewController.eventToDisplay = event
+        eventDisplayViewController.reviewsToDisplay = event.reviews
+        navigationController?.pushViewController(eventDisplayViewController, animated: true)
+    }
 }

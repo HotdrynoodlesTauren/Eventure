@@ -13,7 +13,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(animated)
         
         //MARK: setting up red tab bar...
-        let tabExplore = UINavigationController(rootViewController: ExploreViewController())
+        let tabExplore = UINavigationController(rootViewController: LongTermEventsViewController())
         let tabExploreBarItem = UITabBarItem(
             title: "Explore",
             image: .none,
