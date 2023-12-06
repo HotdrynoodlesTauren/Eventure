@@ -2,22 +2,23 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
-    let mainScreen = CustomLoginView()
-
+    let loginScreen = CustomLoginView()
     var handleAuth: AuthStateDidChangeListenerHandle?
     var currentUser: FirebaseAuth.User?
     let database = Firestore.firestore()
+    let notificationCenter = NotificationCenter.default
 
     override func loadView() {
-        view = mainScreen
-        mainScreen.buttonRegister.addTarget(self, action: #selector(onRegisterTapped), for: .touchUpInside)
-        mainScreen.buttonLogin.addTarget(self, action: #selector(onLoginTapped), for: .touchUpInside)
+        view = loginScreen
+        navigationItem.hidesBackButton = true
+        loginScreen.buttonRegister.addTarget(self, action: #selector(onRegisterTapped), for: .touchUpInside)
+        loginScreen.buttonLogin.addTarget(self, action: #selector(onLoginTapped), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+//        super.viewWillAppear(animated)
         handleAuth = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
             guard let self = self else { return }
             if user == nil {
@@ -47,8 +48,10 @@ class ViewController: UIViewController {
                 self.showAlert(message: "Error signing in: \(error.localizedDescription)")
             } else if let _ = authResult?.user {
                 DispatchQueue.main.async {
-                    let profileViewController = profileViewController() // 修改这里转到mainscreen
-                    self.navigationController?.pushViewController(profileViewController, animated: true)
+//                    let profileViewController = profileViewController()  修改这里转到mainscreen
+//                    self.navigationController?.pushViewController(profileViewController, animated: true)
+                    self.notificationCenter.post(name: .userLoggedin, object: email)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
@@ -61,8 +64,8 @@ class ViewController: UIViewController {
     }
 
     @objc func onLoginTapped() {
-        guard let email = mainScreen.textFieldLogin.text,
-              let password = mainScreen.textFieldPassword.text,
+        guard let email = loginScreen.textFieldLogin.text,
+              let password = loginScreen.textFieldPassword.text,
               !email.isEmpty, !password.isEmpty else {
             showAlert(message: "Please enter both email and password.")
             return

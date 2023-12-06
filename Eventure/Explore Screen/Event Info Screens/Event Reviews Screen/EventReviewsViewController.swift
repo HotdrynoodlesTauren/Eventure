@@ -24,11 +24,7 @@ class EventReviewsViewController: EventInfoViewController {
         
         //MARK: remove the line between tableViews
         eventReviewsScreen.tableViewReviews.separatorStyle = .none
-        if let eventName = receivedEvent.eventName{
-            if !eventName.isEmpty{
-                title = eventName
-            }
-        }
+        
         
         eventReviewsScreen.buttonWriteAReviews.addTarget(self, action:#selector(writeAReview), for: .touchUpInside)
     }
@@ -42,7 +38,11 @@ class EventReviewsViewController: EventInfoViewController {
 
 extension EventReviewsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return receivedReviews.count
+        if let uwReceivedReviews = receivedReviews{
+            return uwReceivedReviews.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

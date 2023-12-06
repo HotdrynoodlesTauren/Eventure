@@ -6,3 +6,9 @@
 //
 
 import Foundation
+extension Notification.Name{
+    static let userLoggedin = Notification.Name("userLoggedin")
+    static let userRegistered = Notification.Name("userRegistered")
+    static let reviewAdded = Notification.Name("reviewAdded")
+
+}

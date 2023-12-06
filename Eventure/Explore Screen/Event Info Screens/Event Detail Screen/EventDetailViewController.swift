@@ -25,12 +25,13 @@ class EventDetailViewController: EventInfoViewController {
             }
         }
         
-        if let image = receivedEvent.image{
-            if !image.isEmpty{
+//        if let image = receivedEvent.image{
+//            if !image.isEmpty{
 //                need to get image from url
 //                eventDetailScreen.imageEvent.image = image
-            }
-        }
+//            }
+//        }
+        
         
         if let timeSpan = receivedEvent.timeSpan{
             if !timeSpan.isEmpty{
@@ -68,5 +69,7 @@ class EventDetailViewController: EventInfoViewController {
         }
         
     }
+    
+    
 
 }

@@ -37,7 +37,30 @@ class EventDisplayViewController: UIViewController {
         //MARK: set the behavior when different tab was tapped
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         
+        if let eventName = eventToDisplay.eventName{
+            if !eventName.isEmpty{
+                print(eventName)
+                title = eventName
+            }
+        }
         
+        if let imageUrl = eventToDisplay.imageUrl {
+            setImage(from: imageUrl)
+        } else {
+            self.eventDisplayScreen.imageEvent.image = nil
+        }
+    }
+    private func setImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            DispatchQueue.main.async { [weak self] in
+               
+                let image = UIImage(data: data)
+                self?.eventDisplayScreen.imageEvent.image = image
+            }
+        }.resume()
     }
     
     //MARK: set the default child controller to the eventDetailViewController

@@ -7,6 +7,7 @@ import FirebaseFirestore
 class RegisterViewController: UIViewController {
     let registerView = RegisterView()
     let childProgressView = ProgressSpinnerViewController()
+    let notificationCenter = NotificationCenter.default
 
     override func loadView() {
         view = registerView
@@ -62,6 +63,9 @@ extension RegisterViewController{
                     
                   
                     self.addUserToFirestore(uid: user.uid, email: email, name: name)
+                    self.notificationCenter.post(name: .userRegistered, object: email)
+                    self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }}

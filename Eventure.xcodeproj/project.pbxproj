@@ -28,6 +28,15 @@
 		3656B04E2B1C57E300D777B5 /* EventWriteAReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B0462B1C57E300D777B5 /* EventWriteAReviewView.swift */; };
 		3656B0502B1C59CA00D777B5 /* EventDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B04F2B1C59CA00D777B5 /* EventDisplayViewController.swift */; };
 		3656B0522B1C59FA00D777B5 /* EventDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B0512B1C59FA00D777B5 /* EventDisplayView.swift */; };
+		36AFF19F2B20380A00C6DE33 /* UploadEventScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF19D2B20380A00C6DE33 /* UploadEventScreen.swift */; };
+		36AFF1A02B20380A00C6DE33 /* UploadEventScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF19E2B20380A00C6DE33 /* UploadEventScreenController.swift */; };
+		36AFF1A42B203A4700C6DE33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1A22B203A4700C6DE33 /* LoginView.swift */; };
+		36AFF1A52B203A4700C6DE33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1A32B203A4700C6DE33 /* LoginViewController.swift */; };
+		36AFF1A92B203A5500C6DE33 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1A72B203A5500C6DE33 /* RegisterView.swift */; };
+		36AFF1AA2B203A5500C6DE33 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1A82B203A5500C6DE33 /* RegisterViewController.swift */; };
+		36AFF1AE2B20403C00C6DE33 /* ProgressSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1AC2B20403C00C6DE33 /* ProgressSpinnerViewController.swift */; };
+		36AFF1AF2B20403C00C6DE33 /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1AD2B20403C00C6DE33 /* ProgressSpinnerDelegate.swift */; };
+		36AFF1B32B2048A800C6DE33 /* TableViewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1B22B2048A800C6DE33 /* TableViewPostCell.swift */; };
 		36F0F5EA2B1B340100AD8EF5 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5E82B1B340100AD8EF5 /* NotificationNames.swift */; };
 		36F0F5EB2B1B340100AD8EF5 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0F5E92B1B340100AD8EF5 /* DataModels.swift */; };
 		A50926CC2B1AC6F3003036E9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A50926CB2B1AC6F3003036E9 /* FirebaseAnalytics */; };
@@ -75,6 +84,15 @@
 		3656B0462B1C57E300D777B5 /* EventWriteAReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventWriteAReviewView.swift; sourceTree = "<group>"; };
 		3656B04F2B1C59CA00D777B5 /* EventDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayViewController.swift; sourceTree = "<group>"; };
 		3656B0512B1C59FA00D777B5 /* EventDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDisplayView.swift; sourceTree = "<group>"; };
+		36AFF19D2B20380A00C6DE33 /* UploadEventScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadEventScreen.swift; sourceTree = "<group>"; };
+		36AFF19E2B20380A00C6DE33 /* UploadEventScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadEventScreenController.swift; sourceTree = "<group>"; };
+		36AFF1A22B203A4700C6DE33 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		36AFF1A32B203A4700C6DE33 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		36AFF1A72B203A5500C6DE33 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		36AFF1A82B203A5500C6DE33 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		36AFF1AC2B20403C00C6DE33 /* ProgressSpinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerViewController.swift; sourceTree = "<group>"; };
+		36AFF1AD2B20403C00C6DE33 /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
+		36AFF1B22B2048A800C6DE33 /* TableViewPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPostCell.swift; sourceTree = "<group>"; };
 		36F0F5E82B1B340100AD8EF5 /* NotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		36F0F5E92B1B340100AD8EF5 /* DataModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		A50926E92B1AC7EF003036E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -132,15 +150,18 @@
 				361B66102B07514900EE36EC /* AppDelegate.swift */,
 				361B66122B07514900EE36EC /* SceneDelegate.swift */,
 				361B662E2B07EE7E00EE36EC /* Main Screen */,
+				36AFF1A12B203A4700C6DE33 /* Login Page */,
+				36AFF1A62B203A5500C6DE33 /* Register Page */,
 				361B66352B07F2F600EE36EC /* Explore Screen */,
 				361B662F2B07EEA600EE36EC /* Connections Screen */,
 				361B66302B07EED200EE36EC /* My Profile Screen */,
+				36AFF1AB2B20403C00C6DE33 /* Progress Indicator */,
+				A50926F92B1AC993003036E9 /* Data Structure */,
 				361B66162B07514900EE36EC /* Main.storyboard */,
 				A50926E92B1AC7EF003036E9 /* GoogleService-Info.plist */,
 				361B66192B07514B00EE36EC /* Assets.xcassets */,
 				361B661B2B07514B00EE36EC /* LaunchScreen.storyboard */,
 				361B661E2B07514B00EE36EC /* Info.plist */,
-				A50926F92B1AC993003036E9 /* Data Structure */,
 			);
 			path = Eventure;
 			sourceTree = "<group>";
@@ -167,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				361B66262B07EDF500EE36EC /* MyProfileViewController.swift */,
+				36AFF1B22B2048A800C6DE33 /* TableViewPostCell.swift */,
 				361B66282B07EE2E00EE36EC /* MyProfileView.swift */,
 			);
 			path = "My Profile Screen";
@@ -179,6 +201,7 @@
 				A50926ED2B1AC89F003036E9 /* LongTermEventsView.swift */,
 				A50926EF2B1AC8B4003036E9 /* LongTermEventsViewController.swift */,
 				3656B03B2B1C57E300D777B5 /* Event Info Screens */,
+				36AFF19C2B20380A00C6DE33 /* Upload Event */,
 			);
 			path = "Explore Screen";
 			sourceTree = "<group>";
@@ -222,6 +245,42 @@
 				3656B0462B1C57E300D777B5 /* EventWriteAReviewView.swift */,
 			);
 			path = "Write Review Screen";
+			sourceTree = "<group>";
+		};
+		36AFF19C2B20380A00C6DE33 /* Upload Event */ = {
+			isa = PBXGroup;
+			children = (
+				36AFF19D2B20380A00C6DE33 /* UploadEventScreen.swift */,
+				36AFF19E2B20380A00C6DE33 /* UploadEventScreenController.swift */,
+			);
+			path = "Upload Event";
+			sourceTree = "<group>";
+		};
+		36AFF1A12B203A4700C6DE33 /* Login Page */ = {
+			isa = PBXGroup;
+			children = (
+				36AFF1A22B203A4700C6DE33 /* LoginView.swift */,
+				36AFF1A32B203A4700C6DE33 /* LoginViewController.swift */,
+			);
+			path = "Login Page";
+			sourceTree = "<group>";
+		};
+		36AFF1A62B203A5500C6DE33 /* Register Page */ = {
+			isa = PBXGroup;
+			children = (
+				36AFF1A72B203A5500C6DE33 /* RegisterView.swift */,
+				36AFF1A82B203A5500C6DE33 /* RegisterViewController.swift */,
+			);
+			path = "Register Page";
+			sourceTree = "<group>";
+		};
+		36AFF1AB2B20403C00C6DE33 /* Progress Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				36AFF1AC2B20403C00C6DE33 /* ProgressSpinnerViewController.swift */,
+				36AFF1AD2B20403C00C6DE33 /* ProgressSpinnerDelegate.swift */,
+			);
+			path = "Progress Indicator";
 			sourceTree = "<group>";
 		};
 		A50926F92B1AC993003036E9 /* Data Structure */ = {
@@ -332,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36AFF1A52B203A4700C6DE33 /* LoginViewController.swift in Sources */,
 				361B66272B07EDF500EE36EC /* MyProfileViewController.swift in Sources */,
 				3656B04E2B1C57E300D777B5 /* EventWriteAReviewView.swift in Sources */,
 				A50926EC2B1AC877003036E9 /* EventTableViewCell.swift in Sources */,
@@ -342,19 +402,27 @@
 				361B66152B07514900EE36EC /* ViewController.swift in Sources */,
 				36F0F5EB2B1B340100AD8EF5 /* DataModels.swift in Sources */,
 				3656B0522B1C59FA00D777B5 /* EventDisplayView.swift in Sources */,
+				36AFF1A42B203A4700C6DE33 /* LoginView.swift in Sources */,
 				361B66112B07514900EE36EC /* AppDelegate.swift in Sources */,
 				3656B0502B1C59CA00D777B5 /* EventDisplayViewController.swift in Sources */,
+				36AFF1AF2B20403C00C6DE33 /* ProgressSpinnerDelegate.swift in Sources */,
 				361B66292B07EE2E00EE36EC /* MyProfileView.swift in Sources */,
 				3656B04B2B1C57E300D777B5 /* EventReviewsViewController.swift in Sources */,
 				361B662B2B07EE4500EE36EC /* ConnectionsView.swift in Sources */,
+				36AFF1A92B203A5500C6DE33 /* RegisterView.swift in Sources */,
 				3656B0482B1C57E300D777B5 /* EventDetailView.swift in Sources */,
 				3656B04D2B1C57E300D777B5 /* EventWriteAReviewViewController.swift in Sources */,
+				36AFF19F2B20380A00C6DE33 /* UploadEventScreen.swift in Sources */,
 				361B662D2B07EE7700EE36EC /* MainScreenView.swift in Sources */,
 				3656B04C2B1C57E300D777B5 /* EventReviewsView.swift in Sources */,
+				36AFF1AE2B20403C00C6DE33 /* ProgressSpinnerViewController.swift in Sources */,
 				3656B0472B1C57E300D777B5 /* EventDetailViewController.swift in Sources */,
 				361B66132B07514900EE36EC /* SceneDelegate.swift in Sources */,
+				36AFF1B32B2048A800C6DE33 /* TableViewPostCell.swift in Sources */,
+				36AFF1A02B20380A00C6DE33 /* UploadEventScreenController.swift in Sources */,
 				A50926EE2B1AC89F003036E9 /* LongTermEventsView.swift in Sources */,
 				A50926F02B1AC8B4003036E9 /* LongTermEventsViewController.swift in Sources */,
+				36AFF1AA2B203A5500C6DE33 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
