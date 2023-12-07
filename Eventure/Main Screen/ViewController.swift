@@ -70,7 +70,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func checkLoginStatus(){
-        let existUser = defaults.object(forKey: "email") as! String?
+        let existUser = defaults.object(forKey: "userName") as! String?
         if existUser != nil {
             
         } else {
@@ -80,15 +80,17 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     @objc func notificationReceivedForUserLoggedin(notification: Notification){
-        let email = notification.object as! String
-        defaults.set(email, forKey: "email")
+        let user = notification.object as! NSDictionary
+        defaults.set(user["name"], forKey: "userName")
+        defaults.set(user["uid"], forKey: "userId")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
     }
     
     @objc func notificationReceivedForUserRegistered(notification: Notification){
-        let email = notification.object as! String
-        defaults.set(email, forKey: "email")
+        let user = notification.object as! NSDictionary
+        defaults.set(user["name"], forKey: "userName")
+        defaults.set(user["uid"], forKey: "userId")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
     }

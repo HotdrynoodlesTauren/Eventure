@@ -46,11 +46,11 @@ class LoginViewController: UIViewController {
             guard let self = self else { return }
             if let error = error {
                 self.showAlert(message: "Error signing in: \(error.localizedDescription)")
-            } else if let _ = authResult?.user {
+            } else if let user = authResult?.user {
                 DispatchQueue.main.async {
 //                    let profileViewController = profileViewController()  修改这里转到mainscreen
 //                    self.navigationController?.pushViewController(profileViewController, animated: true)
-                    self.notificationCenter.post(name: .userLoggedin, object: email)
+                    self.notificationCenter.post(name: .userLoggedin, object: ["name":user.displayName, "uid":user.uid])
                     self.navigationController?.popViewController(animated: true)
                 }
             }

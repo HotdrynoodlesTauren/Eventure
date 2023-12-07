@@ -3,9 +3,10 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class LongTermEventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-   
+    var shouldReloadData = true
     var longTermEventsView: LongTermEventsView!
     var events: [Event] = []
+    
 
     override func loadView() {
         super.loadView()
@@ -17,16 +18,29 @@ class LongTermEventsViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         setupBackgroundImage()
         setupTableView()
-        fetchEventsFromFirebase()
         longTermEventsView.addButton.addTarget(self, action: #selector(onButtonAddTapped), for: .touchUpInside)
-        
+        fetchDataIfNeeded()
     }
-    @objc func onButtonAddTapped(){
-        let updateVC = UploadEventScreenController()
-                self.navigationController?.pushViewController(updateVC, animated: true)
-                
-    }
-    
+
+
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            fetchDataIfNeeded()
+        }
+
+        func fetchDataIfNeeded() {
+            if shouldReloadData {
+             
+                fetchEventsFromFirebase()
+                shouldReloadData = false
+            }
+        }
+
+        @objc func onButtonAddTapped(){
+            let updateVC = UploadEventScreenController()
+            self.navigationController?.pushViewController(updateVC, animated: true)
+            shouldReloadData = true
+        }
     
 
     private func setupBackgroundImage() {
@@ -46,6 +60,7 @@ class LongTermEventsViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func fetchEventsFromFirebase() {
+       
         let db = Firestore.firestore()
         db.collection("Longterm Events").getDocuments { [weak self] (querySnapshot, err) in
             if let err = err {
@@ -83,8 +98,6 @@ class LongTermEventsViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = events[indexPath.row]
-        print("!!!!!!!!!")
-        print(event.eventName!)
         let eventDisplayViewController = EventDisplayViewController()
         eventDisplayViewController.eventToDisplay = event
         // Assuming EventDisplayViewController has these properties

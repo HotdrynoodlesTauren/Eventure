@@ -22,7 +22,7 @@ class EventWriteAReviewView: UIView {
         
         setupImageReview()
         setupButtonUploadPhotos()
-        setupLabelRateYourVisit()
+//        setupLabelRateYourVisit()
         setupLabelShareYourReview()
         setupTextViewReviews()
         setupButtonSubmit()
@@ -36,8 +36,8 @@ class EventWriteAReviewView: UIView {
     
     func setupImageReview(){
         imageReview = UIImageView()
-        imageReview.image = UIImage(systemName: "person.fill")
-        imageReview.contentMode = .scaleToFill
+        imageReview.image = UIImage(systemName: "camera.fill")
+        imageReview.contentMode = .scaleAspectFit
         imageReview.clipsToBounds = true
         imageReview.layer.cornerRadius = 10
         imageReview.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +47,7 @@ class EventWriteAReviewView: UIView {
     func setupButtonUploadPhotos(){
         buttonUploadPhotos = UIButton(type: .system)
         buttonUploadPhotos.setTitle("Upload Photos", for: .normal)
+        buttonUploadPhotos.showsMenuAsPrimaryAction = true
         buttonUploadPhotos.titleLabel?.font = .boldSystemFont(ofSize: 20)
         buttonUploadPhotos.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(buttonUploadPhotos)
@@ -70,7 +71,7 @@ class EventWriteAReviewView: UIView {
     
     func setupTextViewReviews(){
         textViewReviews = UITextView()
-        textViewReviews.backgroundColor = .gray
+        textViewReviews.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         textViewReviews.font = UIFont.systemFont(ofSize: 16)
         textViewReviews.textAlignment = .left
         textViewReviews.isEditable = true
@@ -96,10 +97,10 @@ class EventWriteAReviewView: UIView {
             buttonUploadPhotos.topAnchor.constraint(equalTo: imageReview.bottomAnchor, constant: 5),
             buttonUploadPhotos.trailingAnchor.constraint(equalTo: imageReview.trailingAnchor),
             
-            labelRateYourVisit.topAnchor.constraint(equalTo: buttonUploadPhotos.bottomAnchor, constant: 16),
-            labelRateYourVisit.leadingAnchor.constraint(equalTo: imageReview.leadingAnchor),
+//            labelRateYourVisit.topAnchor.constraint(equalTo: buttonUploadPhotos.bottomAnchor, constant: 16),
+//            labelRateYourVisit.leadingAnchor.constraint(equalTo: imageReview.leadingAnchor),
             
-            labelShareYourReview.topAnchor.constraint(equalTo: labelRateYourVisit.bottomAnchor, constant: 10),
+            labelShareYourReview.topAnchor.constraint(equalTo: buttonUploadPhotos.bottomAnchor, constant: 10),
             labelShareYourReview.leadingAnchor.constraint(equalTo: imageReview.leadingAnchor),
             
             textViewReviews.topAnchor.constraint(equalTo: labelShareYourReview.bottomAnchor, constant: 10),

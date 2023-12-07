@@ -18,14 +18,42 @@ class EventTableViewCell: UITableViewCell {
     func configure(with event: Event) {
         eventNameLabel.text = event.eventName
         eventDescriptionLabel.text = event.description
+
         if let imageUrl = event.imageUrl {
-            setImage(from: imageUrl)
+            // Check if it's a Firebase Storage link
+            if imageUrl.host?.contains("firebasestorage.googleapis.com") == true {
+                
+                // Download image from Firebase Storage
+                downloadImage(from: imageUrl) { downloadedImage in
+                    DispatchQueue.main.async {
+                        self.eventImageView.image = downloadedImage
+                    }
+                }
+            } else {
+                setImage(from: imageUrl)
+                // Load image directly (assuming it's a direct URL to an image)
+               
+            }
         } else {
-            eventImageView.image = nil
+            // Set a default image if there's no imageUrl
+            self.eventImageView.image = UIImage(named: "Img 1")
         }
     }
 
-        
+
+    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error downloading image: \(error?.localizedDescription ?? "Unknown error")")
+                completion(nil)
+                return
+            }
+            completion(UIImage(data: data))
+        }.resume()
+    }
+
+   
+
         private func setImage(from url: URL) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else {

@@ -63,7 +63,7 @@ extension RegisterViewController{
                     
                   
                     self.addUserToFirestore(uid: user.uid, email: email, name: name)
-                    self.notificationCenter.post(name: .userRegistered, object: email)
+                    self.notificationCenter.post(name: .userRegistered, object: ["name":user.displayName, "uid":user.uid])
                     self.navigationController?.popViewController(animated: true)
                     self.navigationController?.popViewController(animated: true)
                 }

@@ -38,7 +38,7 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @objc func onButtonLogoutTapped(){
-        defaults.set(nil, forKey: "email")
+        defaults.set(nil, forKey: "userName")
         let loginController = LoginViewController()
         navigationController?.popViewController(animated: false)
         navigationController?.pushViewController(loginController, animated: true)
@@ -153,7 +153,6 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         cell.postImageView.image = UIImage(systemName: "photo")
         cell.labelPostName.text = "Sample Post Title"
         cell.labelPostContent.text = "This is an example content for the post."
-       
         return cell
     }
 

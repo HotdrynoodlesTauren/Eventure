@@ -13,7 +13,7 @@ class ReviewsTableViewCell: UITableViewCell {
     var wrapperCellView: UIView!
     var imageReview: UIImageView!
     var labelReview: UILabel!
-    var labelRating: UILabel!
+//    var labelRating: UILabel!
     var textViewReview:UITextView!
     
     
@@ -23,7 +23,7 @@ class ReviewsTableViewCell: UITableViewCell {
         setupWrapperCellView()
         setupImageReview()
         setupLabelReview()
-        setupLabelRating()
+//        setupLabelRating()
         setupTextViewReview()
         
         initConstraints()
@@ -76,13 +76,13 @@ class ReviewsTableViewCell: UITableViewCell {
         wrapperCellView.addSubview(labelReview)
     }
     
-    func setupLabelRating(){
-        labelRating = UILabel()
-        labelRating.text = "Rating"
-        labelRating.font = UIFont.systemFont(ofSize: 14)
-        labelRating.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelRating)
-    }
+//    func setupLabelRating(){
+//        labelRating = UILabel()
+//        labelRating.text = "Rating"
+//        labelRating.font = UIFont.systemFont(ofSize: 14)
+//        labelRating.translatesAutoresizingMaskIntoConstraints = false
+//        wrapperCellView.addSubview(labelRating)
+//    }
     
     func setupTextViewReview(){
         textViewReview = UITextView()
@@ -110,10 +110,10 @@ class ReviewsTableViewCell: UITableViewCell {
 //            labelReview.heightAnchor.constraint(equalToConstant: 20),
 //            labelReview.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor, constant: -10),
             
-            labelRating.topAnchor.constraint(equalTo: labelReview.bottomAnchor, constant: 10),
-            labelRating.leadingAnchor.constraint(equalTo: labelReview.leadingAnchor),
+//            labelRating.topAnchor.constraint(equalTo: labelReview.bottomAnchor, constant: 10),
+//            labelRating.leadingAnchor.constraint(equalTo: labelReview.leadingAnchor),
             
-            textViewReview.topAnchor.constraint(equalTo: labelRating.bottomAnchor, constant: 16),
+            textViewReview.topAnchor.constraint(equalTo: labelReview.bottomAnchor, constant: 16),
             textViewReview.bottomAnchor.constraint(equalTo: imageReview.bottomAnchor),
             textViewReview.leadingAnchor.constraint(equalTo: labelReview.leadingAnchor),
             textViewReview.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -8),

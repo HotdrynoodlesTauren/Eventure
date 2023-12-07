@@ -28,6 +28,7 @@
 		3656B04E2B1C57E300D777B5 /* EventWriteAReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B0462B1C57E300D777B5 /* EventWriteAReviewView.swift */; };
 		3656B0502B1C59CA00D777B5 /* EventDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B04F2B1C59CA00D777B5 /* EventDisplayViewController.swift */; };
 		3656B0522B1C59FA00D777B5 /* EventDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3656B0512B1C59FA00D777B5 /* EventDisplayView.swift */; };
+		3690212B2B21BE5300C1CFCA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3690212A2B21BE5300C1CFCA /* FirebaseStorage */; };
 		36AFF19F2B20380A00C6DE33 /* UploadEventScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF19D2B20380A00C6DE33 /* UploadEventScreen.swift */; };
 		36AFF1A02B20380A00C6DE33 /* UploadEventScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF19E2B20380A00C6DE33 /* UploadEventScreenController.swift */; };
 		36AFF1A42B203A4700C6DE33 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFF1A22B203A4700C6DE33 /* LoginView.swift */; };
@@ -111,6 +112,7 @@
 				A50926D02B1AC6F3003036E9 /* FirebaseAnalyticsSwift in Frameworks */,
 				A50926CC2B1AC6F3003036E9 /* FirebaseAnalytics in Frameworks */,
 				A50926CE2B1AC6F3003036E9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				3690212B2B21BE5300C1CFCA /* FirebaseStorage in Frameworks */,
 				A50926E82B1AC6F3003036E9 /* FirebaseFirestoreSwift in Frameworks */,
 				A50926D42B1AC6F3003036E9 /* FirebaseAppCheck in Frameworks */,
 				A50926D22B1AC6F3003036E9 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -331,6 +333,7 @@
 				A50926E32B1AC6F3003036E9 /* FirebaseFirestore */,
 				A50926E52B1AC6F3003036E9 /* FirebaseFirestoreCombine-Community */,
 				A50926E72B1AC6F3003036E9 /* FirebaseFirestoreSwift */,
+				3690212A2B21BE5300C1CFCA /* FirebaseStorage */,
 			);
 			productName = Eventure;
 			productReference = 361B660D2B07514900EE36EC /* Eventure.app */;
@@ -658,6 +661,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3690212A2B21BE5300C1CFCA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A50926CA2B1AC6F3003036E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		A50926CB2B1AC6F3003036E9 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A50926CA2B1AC6F3003036E9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

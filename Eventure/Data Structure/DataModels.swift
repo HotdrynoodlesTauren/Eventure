@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-struct Event: Codable{
+struct Event{
     var eventName:String?
     var eventId:String?
     // User who posted this event
@@ -21,7 +21,8 @@ struct Event: Codable{
     var description:String?
     var reviews:[Review]?
     var imageUrl: URL? {
-        return URL(string: image!)
+        guard let imageString = image, !imageString.isEmpty else { return nil }
+        return URL(string: imageString)
     }
     
     init(documentData: [String: Any], eventId: String) {
@@ -39,20 +40,32 @@ struct Event: Codable{
     }
 }
 
-struct Review: Codable{
+struct Review{
     var userName:String?
     var userId:String?
-    var rating:Int?
-    var images:String?
+//    var rating:Int?
+    var images:UIImage?
     var reviewContent:String?
     
-    init(userName: String? = nil, userId: String? = nil, rating: Int? = nil, images: String? = nil, reviewContent: String? = nil) {
+    init(userName: String? = nil, userId: String? = nil, images: UIImage? = nil, reviewContent: String? = nil) {
         self.userName = userName
         self.userId = userId
-        self.rating = rating
+//        self.rating = rating
         self.images = images
         self.reviewContent = reviewContent
     }
 }
 
-
+//struct User: Codable{
+//    var email: String!
+//    var name: String!
+//    var profileImageURL: String!
+//    var uid: String!
+//    
+//    init(email: String!, name: String!, profileImageURL: String!, uid: String!) {
+//        self.email = email
+//        self.name = name
+//        self.profileImageURL = profileImageURL
+//        self.uid = uid
+//    }
+//}
