@@ -63,9 +63,10 @@ extension RegisterViewController{
                     
                   
                     self.addUserToFirestore(uid: user.uid, email: email, name: name)
-                    self.notificationCenter.post(name: .userRegistered, object: ["name":user.displayName, "uid":user.uid])
-                    self.navigationController?.popViewController(animated: true)
-                    self.navigationController?.popViewController(animated: true)
+//                    self.notificationCenter.post(name: .userRegistered, object: ["name":user.displayName, "uid":user.uid])
+//                    print("22222222")
+//                    self.navigationController?.popViewController(animated: true)
+//                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }}
@@ -88,6 +89,10 @@ extension RegisterViewController{
                     self.showAlert(message: "Error adding user to Firestore.")
                 } else {
                     print("User added to Firestore with UID: \(uid)")
+                    
+                    self.notificationCenter.post(name: .userRegistered, object: ["name":name, "uid":uid])
+                    self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }

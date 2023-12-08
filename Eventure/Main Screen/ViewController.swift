@@ -85,11 +85,12 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     
     @objc func notificationReceivedForUserLoggedin(notification: Notification){
         let user = notification.object as! NSDictionary
+        
         defaults.set(user["name"], forKey: "userName")
         defaults.set(user["uid"], forKey: "userId")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
-        self.selectedIndex = 1
+        self.selectedIndex = 0
     }
     
     @objc func notificationReceivedForUserRegistered(notification: Notification){
@@ -98,7 +99,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         defaults.set(user["uid"], forKey: "userId")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
-        self.selectedIndex = 1
+        self.selectedIndex = 0
     }
 
 }
