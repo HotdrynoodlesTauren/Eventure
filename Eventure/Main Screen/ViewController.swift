@@ -24,6 +24,8 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
 //            image: UIImage(systemName: "r.square")?.withRenderingMode(.alwaysOriginal),
 //            selectedImage: UIImage(systemName: "r.square.fill")
         )
+        tabExploreBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+        tabExploreBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.blue], for: .selected)
         tabExplore.tabBarItem = tabExploreBarItem
 //        tabExplore.navigationItem.title = "Explore Events Near You"
 //        tabExplore.title = "Red"
@@ -50,6 +52,8 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
 //            image: UIImage(systemName: "b.square")?.withRenderingMode(.alwaysOriginal),
 //            selectedImage: UIImage(systemName: "b.square.fill")
         )
+        tabMyProfileBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
+        tabMyProfileBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.blue], for: .selected)
         tabMyProfile.tabBarItem = tabMyProfileBarItem
 //        tabExplore.navigationItem.title = "My Profile"
 //        tabMyProfile.title = "Blue"
@@ -85,6 +89,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         defaults.set(user["uid"], forKey: "userId")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
+        self.selectedIndex = 1
     }
     
     @objc func notificationReceivedForUserRegistered(notification: Notification){
@@ -93,6 +98,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         defaults.set(user["uid"], forKey: "userId")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
+        self.selectedIndex = 1
     }
 
 }

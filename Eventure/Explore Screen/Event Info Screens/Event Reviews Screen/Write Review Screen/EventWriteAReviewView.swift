@@ -71,7 +71,7 @@ class EventWriteAReviewView: UIView {
     
     func setupTextViewReviews(){
         textViewReviews = UITextView()
-        textViewReviews.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        textViewReviews.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
         textViewReviews.font = UIFont.systemFont(ofSize: 16)
         textViewReviews.textAlignment = .left
         textViewReviews.isEditable = true

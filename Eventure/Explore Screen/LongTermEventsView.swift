@@ -7,7 +7,7 @@ class LongTermEventsView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Long Term Events"
+        label.text = "Explore Events"
         label.textAlignment = .center
         //label.textColor = UIColor(white) // Light blue color
         label.font = UIFont.boldSystemFont(ofSize: 24) // System bold font

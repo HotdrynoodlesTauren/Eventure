@@ -98,6 +98,7 @@ class LongTermEventsViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = events[indexPath.row]
+        
         let eventDisplayViewController = EventDisplayViewController()
         eventDisplayViewController.eventToDisplay = event
         // Assuming EventDisplayViewController has these properties

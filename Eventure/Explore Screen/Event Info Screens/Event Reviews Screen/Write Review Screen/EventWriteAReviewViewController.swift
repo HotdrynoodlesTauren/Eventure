@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 import FirebaseFirestore
-//import FirebaseStorage
+import FirebaseStorage
 
 class EventWriteAReviewViewController: UIViewController {
     
@@ -18,6 +18,8 @@ class EventWriteAReviewViewController: UIViewController {
     let database = Firestore.firestore()
     let notificationCenter = NotificationCenter.default
     let defaults = UserDefaults.standard
+    var firestore: Firestore! // Firestore reference
+    var receivedEventId:String!
     
     override func loadView(){
         view = eventWriteAReviewScreen
@@ -26,6 +28,7 @@ class EventWriteAReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Write A Review"
+        firestore = Firestore.firestore()
         view = eventWriteAReviewScreen
         
         eventWriteAReviewScreen.buttonUploadPhotos.menu = getMenuImagePicker()
@@ -44,22 +47,90 @@ class EventWriteAReviewViewController: UIViewController {
             }else{
                 let userName = defaults.object(forKey: "userName") as! String?
                 let userId = defaults.object(forKey: "userId") as! String?
-                var reviewImageURL: String!
-                if let uwPickedImage = pickedImage{
-//                    uploadProfilePhotoToStorage()
-                } else {
-                    reviewImageURL = ""
-                }
-                reviewToSubmit = Review(userName: userName, userId: userId, images: pickedImage, reviewContent: uwReview)
-                print(reviewToSubmit!)
-                self.notificationCenter.post(name: .reviewAdded, object: reviewToSubmit)
+                let eventId = receivedEventId
+//                var reviewImageURL: String!
                 
-                navigationController?.popViewController(animated: true)
+                    uploadImageToFirebase { [weak self] imageURL in
+                        guard let imageURL = imageURL, let userId = userId, let userName = userName, let eventId = eventId else {
+                            // Handle the case where image URL is nil
+                            self?.showAlert(message: "Error: Please upload an image.")
+                            return
+                        }
+                        let reviewData: [String: Any] = [
+                            "eventId":eventId,
+                            "images": imageURL,
+                            "reviewContent": uwReview,
+                            "userId": userId,
+                            "userName": userName,
+                         ]
+                        print(reviewData)
+                        // Upload to Firebase
+                        self?.firestore.collection("Reviews").addDocument(data: reviewData) { error in
+                            if let error = error {
+                                // Handle the error, show an alert to the user
+                                self?.showAlert(message:"Error adding document: \(error)")
+                            } else {
+//                                let alert = UIAlertController(title: "Success!", message: "Successfully Uploaded!", preferredStyle: .alert)
+//                                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+//                                self?.present(alert, animated: true, completion: nil)
+                                
+                            }
+                        }
+                    }
+                        
+                // Save to previous screen
+                if let uwPickedImage = pickedImage{
+                    reviewToSubmit = Review(userName: userName, userId: userId, eventId: eventId, images: pickedImage, reviewContent: uwReview)
+                    self.notificationCenter.post(name: .reviewAdded, object: reviewToSubmit)
+                    navigationController?.popViewController(animated: true)
+                } else {
+                    showAlert(message: "Error: Please upload an image.")
+                }
             }
         }
     }
     
+    func uploadImageToFirebase(completion: @escaping (String?) -> Void) {
+        guard let pickedImage = pickedImage else {
+            showAlert(message: "Please select an image for the review.")
+            completion(nil)
+            return
+        }
 
+        guard let imageData = pickedImage.jpegData(compressionQuality: 0.75) else {
+            showAlert(message: "Error in image data conversion.")
+            completion(nil)
+            return
+        }
+
+        let imageName = UUID().uuidString + ".jpg"
+        let storageRef = Storage.storage().reference().child("event_images/\(imageName)")
+
+        storageRef.putData(imageData, metadata: nil) { [weak self] metadata, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                self.showAlert(message: "Error uploading image: \(error)")
+                completion(nil)
+                return
+            }
+
+            storageRef.downloadURL { url, error in
+                if let error = error {
+                    self.showAlert(message: "Error getting image URL: \(error)")
+                    completion(nil)
+                } else if let imageURL = url?.absoluteString {
+                    completion(imageURL)
+                }
+            }
+        }
+    }
+
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Notification", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
     func showEmptyErrorAlert(){
         let alert = UIAlertController(title: "Error!", message: "Please write something before saving!", preferredStyle: .alert)

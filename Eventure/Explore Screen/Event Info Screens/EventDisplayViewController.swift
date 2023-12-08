@@ -72,6 +72,7 @@ class EventDisplayViewController: UIViewController {
             if let currentChildViewController = currentChild as? EventReviewsViewController {
                 print("222222")
                 currentChildViewController.receivedReviews.append(newReview)
+//                currentChildViewController.loadReviews()
                 currentChildViewController.eventReviewsScreen.tableViewReviews.reloadData()
             }
         }

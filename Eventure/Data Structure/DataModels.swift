@@ -43,14 +43,15 @@ struct Event{
 struct Review{
     var userName:String?
     var userId:String?
+    var eventId:String?
 //    var rating:Int?
     var images:UIImage?
     var reviewContent:String?
     
-    init(userName: String? = nil, userId: String? = nil, images: UIImage? = nil, reviewContent: String? = nil) {
+    init(userName: String? = nil, userId: String? = nil, eventId: String? = nil, images: UIImage? = nil, reviewContent: String? = nil) {
         self.userName = userName
         self.userId = userId
-//        self.rating = rating
+        self.eventId = eventId
         self.images = images
         self.reviewContent = reviewContent
     }
