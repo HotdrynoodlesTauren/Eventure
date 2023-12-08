@@ -14,6 +14,8 @@ class EventDetailView: UIView {
     var labelTimeSpan:UILabel!
     var imageAddress:UIImageView!
     var labelAddress:UILabel!
+    var imageTimeOpening:UIImageView!
+    var labelTimeOpening:UILabel!
     var imageWebsite:UIImageView!
     var labelWebsite:UILabel!
     var imagePhone:UIImageView!
@@ -32,6 +34,8 @@ class EventDetailView: UIView {
         setupLabelTimeSpan()
         setupImageAddress()
         setupLabelAddress()
+        setupImageTimeOpening()
+        setupLabelTimeOpening()
         setupImageWebsite()
         setupLabelWebsite()
         setupImagePhone()
@@ -42,8 +46,7 @@ class EventDetailView: UIView {
 //        setupLabelStreet()
 //        setupLabelCityState()
 //        setupLabelZip()
-//        
-        
+
         initConstraints()
     }
     
@@ -92,6 +95,24 @@ class EventDetailView: UIView {
         labelAddress.textAlignment = .center
         labelAddress.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(labelAddress)
+    }
+    
+    func setupImageTimeOpening(){
+        imageTimeOpening = UIImageView()
+        imageTimeOpening.image = UIImage(systemName: "clock.fill")
+        imageTimeOpening.contentMode = .scaleAspectFit
+        imageTimeOpening.clipsToBounds = true
+        imageTimeOpening.layer.cornerRadius = 10
+        imageTimeOpening.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(imageTimeOpening)
+    }
+    
+    func setupLabelTimeOpening(){
+        labelTimeOpening = UILabel()
+        labelTimeOpening.text = "Time Opening:"
+        labelTimeOpening.textAlignment = .center
+        labelTimeOpening.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(labelTimeOpening)
     }
     
     func setupImageWebsite(){
@@ -162,7 +183,14 @@ class EventDetailView: UIView {
             labelAddress.topAnchor.constraint(equalTo: imageAddress.topAnchor),
             labelAddress.leadingAnchor.constraint(equalTo: imageAddress.trailingAnchor, constant: 10),
             
-            imageWebsite.topAnchor.constraint(equalTo: labelAddress.bottomAnchor, constant: 20),
+            imageTimeOpening.topAnchor.constraint(equalTo: labelAddress.bottomAnchor, constant: 20),
+            imageTimeOpening.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            imageTimeOpening.heightAnchor.constraint(equalToConstant: 15),
+            
+            labelTimeOpening.topAnchor.constraint(equalTo: imageTimeOpening.topAnchor),
+            labelTimeOpening.leadingAnchor.constraint(equalTo: imageTimeOpening.trailingAnchor, constant: 10),
+            
+            imageWebsite.topAnchor.constraint(equalTo: labelTimeOpening.bottomAnchor, constant: 20),
             imageWebsite.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             imageWebsite.heightAnchor.constraint(equalToConstant: 15),
             

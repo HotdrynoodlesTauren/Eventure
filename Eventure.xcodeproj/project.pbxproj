@@ -214,8 +214,8 @@
 				3656B04F2B1C59CA00D777B5 /* EventDisplayViewController.swift */,
 				3656B0512B1C59FA00D777B5 /* EventDisplayView.swift */,
 				3656B03F2B1C57E300D777B5 /* EventInfoViewController.swift */,
-				3656B0402B1C57E300D777B5 /* Event Reviews Screen */,
 				3656B03C2B1C57E300D777B5 /* Event Detail Screen */,
+				3656B0402B1C57E300D777B5 /* Event Reviews Screen */,
 			);
 			path = "Event Info Screens";
 			sourceTree = "<group>";

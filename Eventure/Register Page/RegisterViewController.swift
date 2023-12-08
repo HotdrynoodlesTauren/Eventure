@@ -90,7 +90,7 @@ extension RegisterViewController{
                 } else {
                     print("User added to Firestore with UID: \(uid)")
                     
-                    self.notificationCenter.post(name: .userRegistered, object: ["name":name, "uid":uid])
+                    self.notificationCenter.post(name: .userRegistered, object: ["name":name, "uid":uid, "email":email])
                     self.navigationController?.popViewController(animated: true)
                     self.navigationController?.popViewController(animated: true)
                 }

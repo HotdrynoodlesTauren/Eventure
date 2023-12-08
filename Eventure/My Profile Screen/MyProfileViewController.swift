@@ -39,6 +39,8 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
     
     @objc func onButtonLogoutTapped(){
         defaults.set(nil, forKey: "userName")
+        defaults.set(nil, forKey: "userId")
+        defaults.set(nil, forKey: "userEmail")
         let loginController = LoginViewController()
         loginController.hidesBottomBarWhenPushed = true
         navigationController?.popViewController(animated: false)

@@ -41,7 +41,7 @@ class EventDetailViewController: EventInfoViewController {
         
         if let timeOpening = receivedEvent.timeOpening{
             if !timeOpening.isEmpty{
-//                eventDetailScreen.labelTimeSpan.text = timeSpan
+                eventDetailScreen.labelTimeOpening.text = timeOpening
             }
         }
         

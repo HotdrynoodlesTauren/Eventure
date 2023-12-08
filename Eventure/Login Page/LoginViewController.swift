@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async {
 //                    let profileViewController = profileViewController()  修改这里转到mainscreen
 //                    self.navigationController?.pushViewController(profileViewController, animated: true)
-                    self.notificationCenter.post(name: .userLoggedin, object: ["name":user.displayName, "uid":user.uid])
+                    self.notificationCenter.post(name: .userLoggedin, object: ["name":user.displayName, "uid":user.uid, "email":user.email])
                     self.navigationController?.popViewController(animated: true)
                 }
             }

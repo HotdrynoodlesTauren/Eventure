@@ -88,6 +88,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         
         defaults.set(user["name"], forKey: "userName")
         defaults.set(user["uid"], forKey: "userId")
+        defaults.set(user["email"], forKey: "userEmail")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
         self.selectedIndex = 0
@@ -97,6 +98,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         let user = notification.object as! NSDictionary
         defaults.set(user["name"], forKey: "userName")
         defaults.set(user["uid"], forKey: "userId")
+        defaults.set(user["email"], forKey: "userEmail")
 //        self.getUserProfile(token: apiKey)
 //        self.getAllNotes(token: apiKey)
         self.selectedIndex = 0
