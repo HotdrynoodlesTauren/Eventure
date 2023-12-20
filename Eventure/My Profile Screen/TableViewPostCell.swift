@@ -1,89 +1,123 @@
+//
+//  TableViewPostCell.swift
+//  Eventure
+//
+
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
-    var wrapperCellView: UIView!
-    var postImageView: UIImageView!
-    var labelPostName: UILabel!
-    var labelPostContent: UILabel!
+class TableViewPostCell: UITableViewCell {
+    static let identifier = "TableViewPostCell"
+
+    private let eventImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    func configure(with event: Event) {
+        eventNameLabel.text = event.eventName
+        eventDescriptionLabel.text = event.description
+
+        if let imageUrl = event.imageUrl {
+            // Check if it's a Firebase Storage link
+            if imageUrl.host?.contains("firebasestorage.googleapis.com") == true {
+                
+                // Download image from Firebase Storage
+                downloadImage(from: imageUrl) { downloadedImage in
+                    DispatchQueue.main.async {
+                        self.eventImageView.image = downloadedImage
+                    }
+                }
+            } else {
+                setImage(from: imageUrl)
+                // Load image directly (assuming it's a direct URL to an image)
+               
+            }
+        } else {
+            // Set a default image if there's no imageUrl
+            self.eventImageView.image = UIImage(named: "Img 1")
+        }
+    }
+
+
+    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error downloading image: \(error?.localizedDescription ?? "Unknown error")")
+                completion(nil)
+                return
+            }
+            completion(UIImage(data: data))
+        }.resume()
+    }
+
+   
+
+        private func setImage(from url: URL) {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else {
+                    
+                    return
+                }
+                
+                DispatchQueue.main.async { [weak self] in
+                   
+                    let image = UIImage(data: data)
+                    self?.eventImageView.image = image
+                }
+            }.resume()
+        }
+
+    private let eventNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        return label
+    }()
+
+    private let eventDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 0
+        return label
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupWrapperCellView()
-        setupPostImageView()
-        setupLabelPostName()
-        setupLabelPostContent()
-        initConstraints()
-    }
-
-    func setupWrapperCellView() {
-        wrapperCellView = UIView()
-        wrapperCellView.backgroundColor = .white
-        wrapperCellView.layer.cornerRadius = 10.0
-        wrapperCellView.layer.shadowColor = UIColor.gray.cgColor
-        wrapperCellView.layer.shadowOffset = .zero
-        wrapperCellView.layer.shadowRadius = 6.0
-        wrapperCellView.layer.shadowOpacity = 0.7
-        wrapperCellView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(wrapperCellView)
-    }
-
-    func setupPostImageView() {
-        postImageView = UIImageView()
-        postImageView.image = UIImage(systemName: "photo")
-        postImageView.contentMode = .scaleToFill
-        postImageView.clipsToBounds = true
-        postImageView.layer.cornerRadius = 10
-        postImageView.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(postImageView)
-    }
-
-    func setupLabelPostName() {
-        labelPostName = UILabel()
-        labelPostName.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelPostName)
-    }
-
-    func setupLabelPostContent() {
-        labelPostContent = UILabel()
-        labelPostContent.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelPostContent)
-    }
-
-    func initConstraints() {
-        NSLayoutConstraint.activate([
-            wrapperCellView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            wrapperCellView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            wrapperCellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            wrapperCellView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-
-            postImageView.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
-            postImageView.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
-            postImageView.heightAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
-            postImageView.widthAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
-
-            labelPostName.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 2),
-            labelPostName.leadingAnchor.constraint(equalTo: postImageView.trailingAnchor, constant: 8),
-            labelPostName.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -8),
-
-            labelPostContent.topAnchor.constraint(equalTo: labelPostName.bottomAnchor, constant: 2),
-            labelPostContent.leadingAnchor.constraint(equalTo: labelPostName.leadingAnchor),
-            labelPostContent.trailingAnchor.constraint(equalTo: labelPostName.trailingAnchor),
-            labelPostContent.bottomAnchor.constraint(equalTo: wrapperCellView.bottomAnchor, constant: -2)
-        ])
+        contentView.addSubview(eventImageView)
+        contentView.addSubview(eventNameLabel)
+        contentView.addSubview(eventDescriptionLabel)
+        applyConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    private func applyConstraints() {
+        eventImageView.translatesAutoresizingMaskIntoConstraints = false
+        eventNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        eventDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            // Constraints for eventImageView
+            eventImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            eventImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            eventImageView.heightAnchor.constraint(equalToConstant: 60),
+            eventImageView.widthAnchor.constraint(equalToConstant: 60),
+
+            // Constraints for eventNameLabel
+            eventNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            eventNameLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 10),
+            eventNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            
+            // Constraints for eventDescriptionLabel
+            eventDescriptionLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 5),
+            eventDescriptionLabel.leadingAnchor.constraint(equalTo: eventImageView.trailingAnchor, constant: 10),
+            eventDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            eventDescriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+        ])
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+ 
 }
-
-

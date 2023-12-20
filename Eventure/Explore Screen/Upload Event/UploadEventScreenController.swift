@@ -9,6 +9,7 @@ class UploadEventScreenController: UIViewController {
     let uploadEventsView = UploadEventScreen()
     var firestore: Firestore! // Firestore reference
     var pickedImage:UIImage?
+    let defaults = UserDefaults.standard
     
     
     override func loadView() {
@@ -141,17 +142,18 @@ class UploadEventScreenController: UIViewController {
             if !isValidPhone(eventPhone) {
                 showAlert(message: "Invalid Phone Number")
                 return}
-            
+            let userId = defaults.object(forKey: "userId") as! String?
             // Create a dictionary or a custom object for the event
             let eventData: [String: Any] = [
                 "eventName": eventName,
                 "website": eventWebsite,
-                "phone": eventPhone,
+                "phoneNumber": eventPhone,
                 "timeSpan": eventTimeSpan,
                 "image": imageURL,
                 "timeOpening": eventTimeOpening,
                 "address": eventAddress,
-                "description": eventDescription
+                "description": eventDescription,
+                "userId": userId
                 
             ]
             

@@ -1,42 +1,103 @@
-//
-//  MyProfileViewController.swift
-//  Eventure
-//
-//  Created by Yi Zhou on 11/17/23.
-//
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseStorage
+import PhotosUI
 
-class MyProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    var profileImageView: UIImageView!
-    var cameraButton: UIButton!
-    var nameLabel: UILabel!
-    var emailLabel: UILabel!
-    var backgroundImageView: UIImageView!
-    var tableView: UITableView!
+class MyProfileViewController: UIViewController {
+    var delegate: ViewController!
+    var currentUser: FirebaseAuth.User?
+    var pickedImage: UIImage?
+    var events: [Event] = []
+    var shouldReloadData = true
+    
+    let database = Firestore.firestore()
+    let storage = Storage.storage()
+    let profileView = ProfileView()
     let defaults = UserDefaults.standard
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        backgroundImageView = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.clipsToBounds = true
-        backgroundImageView.image = UIImage(named: "bg.jpg")
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(backgroundImageView)
-
-        setupProfileImageView()
-        setupCameraButton()
-        setupLabels()
-        setupTableView()
-
-        initConstraints()
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", image: .none, target: self, action: #selector(onButtonLogoutTapped))
+    
+    override func loadView() {
+        view = profileView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchEventsFromFirebase()
+        profileView.tableView.delegate = self
+                profileView.tableView.dataSource = self
+       
+        fetchDataIfNeeded()
+        retrieveProfilePicture()
+        
+        profileView.cameraButton.menu = getMenuImagePicker()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", image: .none, target: self, action: #selector(onButtonLogoutTapped))
+        
+        profileView.configureRefreshButtonAction(target: self, action: #selector(refreshButtonTapped))
+        if let currentUser = Auth.auth().currentUser {
+                profileView.nameLabel.text = currentUser.displayName ?? "No Name"
+                profileView.emailLabel.text = currentUser.email ?? "No Email"
+            }
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchDataIfNeeded()
+    }
+    @objc func refreshButtonTapped() {
+        fetchEventsFromFirebase()
+        retrieveProfilePicture()
+        if let currentUser = Auth.auth().currentUser {
+                profileView.nameLabel.text = currentUser.displayName ?? "No Name"
+                profileView.emailLabel.text = currentUser.email ?? "No Email"
+            }
+    }
+
+
+    func fetchDataIfNeeded() {
+        if shouldReloadData {
+         
+            fetchEventsFromFirebase()
+            shouldReloadData = false
+        }
+    }
+
+    
+    func uploadProfilePicture() {
+        guard let pickedImage = self.pickedImage else {
+            print("Profile picture is nil")
+            return
+        }
+
+        guard let imageData = pickedImage.jpegData(compressionQuality: 0.4) else {
+            print("Failed to get image data")
+            return
+        }
+
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user signed in")
+            return
+        }
+
+        let profileImageRef = storage.reference().child("profile_images/\(userId).jpg")
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        profileImageRef.putData(imageData, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                print("Error uploading profile picture: \(error.localizedDescription)")
+            } else {
+                print("Profile picture uploaded successfully")
+                
+                profileImageRef.downloadURL { (url, error) in
+                    if let downloadURL = url {
+                        let userDocRef = self.database.collection("users").document(userId)
+                        userDocRef.setData(["profileImageURL": downloadURL.absoluteString], merge: true)
+                    }
+                }
+            }
+        }
+    }
     @objc func onButtonLogoutTapped(){
         defaults.set(nil, forKey: "userName")
         defaults.set(nil, forKey: "userId")
@@ -46,118 +107,187 @@ class MyProfileViewController: UIViewController, UITableViewDataSource, UITableV
         navigationController?.popViewController(animated: false)
         navigationController?.pushViewController(loginController, animated: true)
     }
-      
-    func setupProfileImageView() {
-        profileImageView = UIImageView()
-        profileImageView.image = UIImage(systemName: "person")
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.layer.cornerRadius = 50
-        profileImageView.clipsToBounds = true
-        profileImageView.layer.borderWidth = 2.0
-        profileImageView.layer.borderColor = UIColor.white.cgColor
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(profileImageView)
-    }
-
-   
-    func setupCameraButton() {
-        cameraButton = UIButton(type: .system)
-        cameraButton.setImage(UIImage(systemName: "camera"), for: .normal)
-        cameraButton.tintColor = .white
-        cameraButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(cameraButton)
-
-       
-        cameraButton.addTarget(self, action: #selector(cameraButtonTapped), for: .touchUpInside)
-        
-       
-        cameraButton.layer.shadowColor = UIColor.gray.cgColor
-        cameraButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cameraButton.layer.shadowRadius = 4
-        cameraButton.layer.shadowOpacity = 0.8
-    }
-
- 
-    func setupLabels() {
-        nameLabel = UILabel()
-        nameLabel.text = "User Name"
-        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        nameLabel.textColor = .white
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(nameLabel)
-
-        emailLabel = UILabel()
-        emailLabel.text = "User@example.com"
-        emailLabel.font = UIFont.systemFont(ofSize: 14)
-        emailLabel.textColor = .white
-        emailLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(emailLabel)
-    }
-
-
-
-    func setupTableView() {
-            tableView = UITableView()
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.register(TableViewCell.self, forCellReuseIdentifier: "PostCell")
-            tableView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(tableView)
+    func retrieveProfilePicture() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user signed in")
+            return
         }
-   
 
-    func initConstraints() {
-        NSLayoutConstraint.activate(
-            [
-               
-                profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-                profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                profileImageView.widthAnchor.constraint(equalToConstant: 100),
-                profileImageView.heightAnchor.constraint(equalToConstant: 100),
+        let userDocRef = database.collection("users").document(userId)
 
-               
-                cameraButton.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
-                cameraButton.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 10),
-                cameraButton.widthAnchor.constraint(equalToConstant: 30),
-                cameraButton.heightAnchor.constraint(equalToConstant: 30),
+        userDocRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let userData = document.data()
+      
+                if let profileImageURLString = userData?["profileImageURL"] as? String,
+                   let profileImageURL = URL(string: profileImageURLString) {
 
-                nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 20),
-                nameLabel.topAnchor.constraint(equalTo: profileImageView.topAnchor, constant: 10),
+                    URLSession.shared.dataTask(with: profileImageURL) { (data, _, error) in
+                        if let error = error {
+                            print("Error downloading profile picture: \(error.localizedDescription)")
+                            return
+                        }
 
-                emailLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 20),
-                emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
-
-                tableView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20),
-                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-                backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-                backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ]
-        )
+                        if let data = data, let profileImage = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                self.profileView.profileImageView.image = profileImage
+                            }
+                        } else {
+                            print("Error creating image from data")
+                        }
+                    }.resume()
+                } else {
+                    print("No profile picture URL found for the user")
+                }
+            } else {
+                print("Document does not exist or error: \(error?.localizedDescription ?? "Unknown error")")
+            }
+        }
     }
 
-
-
-    @objc func cameraButtonTapped() {
-        print("Camera button tapped")
+    func fetchUserData() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let userDocRef = database.collection("users").document(userId)
+        
+        userDocRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let userData = document.data()
+                let userName = userData?["name"] as? String ?? "Anonymous"
+                let userEmail = userData?["email"] as? String ?? "No Email"
+                
+                DispatchQueue.main.async {
+                    self.profileView.nameLabel.text = "\(userName)"
+                    self.profileView.emailLabel.text = "\(userEmail)"
+                }
+            } else {
+                print("Document does not exist or error: \(error?.localizedDescription ?? "Unknown error")")
+            }
+        }
     }
-
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return 1
+    
+    func getMenuImagePicker() -> UIMenu {
+        var menuItems = [
+            UIAction(title: "Camera", handler: { _ in
+                self.pickUsingCamera()
+            }),
+            UIAction(title: "Gallery", handler: { _ in
+                self.pickPhotoFromGallery()
+            })
+        ]
+        
+        return UIMenu(title: "Select source", children: menuItems)
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! TableViewCell
-        cell.postImageView.image = UIImage(systemName: "photo")
-        cell.labelPostName.text = "Sample Post Title"
-        cell.labelPostContent.text = "This is an example content for the post."
-        return cell
+    
+    func pickUsingCamera() {
+        let cameraController = UIImagePickerController()
+        cameraController.sourceType = .camera
+        cameraController.allowsEditing = true
+        cameraController.delegate = self
+        present(cameraController, animated: true)
     }
+    
+    func pickPhotoFromGallery() {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = PHPickerFilter.images
+        configuration.selectionLimit = 1
+        
+        let photoPicker = PHPickerViewController(configuration: configuration)
+        
+        photoPicker.delegate = self
+        present(photoPicker, animated: true, completion: nil)
+    }
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Notification", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func fetchEventsFromFirebase() {
+        // Get the current user's ID
+        guard let currentUserId = Auth.auth().currentUser?.uid else {
+            self.showAlert(message: "No user signed in")
+            return
+        }
 
+        let db = Firestore.firestore()
+        // Query for events where 'userId' field matches the current user's ID
+        db.collection("Longterm Events").whereField("userId", isEqualTo: currentUserId).getDocuments { [weak self] (querySnapshot, err) in
+            if let err = err {
+                self?.showAlert(message: "Error getting documents")
+                return
+            } else {
+                var fetchedEvents: [Event] = []
+                for document in querySnapshot!.documents {
+              
+                    let event = Event(documentData: document.data(), eventId: document.documentID)
+                    fetchedEvents.append(event)
+                }
+                DispatchQueue.main.async {
+                    self?.events = fetchedEvents
+                    self?.profileView.tableView.reloadData()
+                }
+            }
+        }
+    }
 
 }
+
+
+
+
+extension MyProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        if let image = info[.editedImage] as? UIImage {
+            self.profileView.cameraButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.pickedImage = image
+        } else {
+        }
+    }
+}
+
+extension MyProfileViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        guard let itemProvider = results.first?.itemProvider else { return }
+        
+        if itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                DispatchQueue.main.async {
+                    if let pickedImage = image as? UIImage {
+                        self.profileView.profileImageView.image = pickedImage
+                        self.pickedImage = pickedImage
+                        self.uploadProfilePicture()
+                    }
+                }
+            }
+        }
+        
+        picker.dismiss(animated: true)
+    }
+}
+
+
+extension MyProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewPostCell.identifier, for: indexPath) as! TableViewPostCell
+        cell.configure(with: events[indexPath.row])
+        return cell
+    }
+    
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+        return events.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
+    
+}
+

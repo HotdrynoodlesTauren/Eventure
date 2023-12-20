@@ -141,7 +141,7 @@ class EventWriteAReviewViewController: UIViewController {
     func getMenuImagePicker() -> UIMenu{
         let menuItems = [
             UIAction(title:"Camera", handler: {(_) in self.pickUsingCamera()}),
-            UIAction(title: "Callery", handler: {(_) in self.pickFromGallery()})
+            UIAction(title: "Gallery", handler: {(_) in self.pickFromGallery()})
         ]
         return UIMenu(title: "Select Source", children: menuItems)
     }
